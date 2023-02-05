@@ -5,7 +5,26 @@
 
 ---
 
+## grpc/1.50.1 setup with artifactory
 
+For Conan 1.13 and up, use the following command to activate the revision feature:
+
+```shell
+export CONAN_REVISIONS_ENABLED=1
+```
+For your Conan command line client to work with this Conan repository, you first need to add the repository to your client configuration using the following command:
+
+```shell
+conan remote add armv7-armv8-x86_64-linux-thommyho http://artifactory.dns.army:8081/artifactory/api/conan/armv7-armv8-x86_64-linux-thommyho
+```
+
+**No user login required: anonymous read access is always granted!**
+
+To install the dependencies defined in your project's conanfile.txt from an Artifactory Conan repository, use the following command:
+
+```shell
+conan install . grpc/1.50.1@ -r armv7-armv8-x86_64-linux-thommyho
+```
 
 <br>
 
