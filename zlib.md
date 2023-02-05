@@ -1,7 +1,7 @@
 
 
 
-# re2/20220601
+# zlib/1.2.13
 
 ---
 
@@ -9,17 +9,17 @@
 
 <br>
 
-## Using the re2 Conan Package
+## Using the zlib Conan Package
 
 <br>
 
-Conan integrates with different build systems. You can declare which build system you want your project to use setting in the **[generators]** section of the [conanfile.txt](https://docs.conan.io/en/latest/reference/conanfile_txt.html#generators) or using the **generators** attribute in the [conanfile.py](https://docs.conan.io/en/latest/reference/conanfile/attributes.html#generators). Here, there is some basic information you can use to integrate **re2** in your own project. For more detailed information, please [check the Conan documentation](https://docs.conan.io/en/latest/getting_started.html).
+Conan integrates with different build systems. You can declare which build system you want your project to use setting in the **[generators]** section of the [conanfile.txt](https://docs.conan.io/en/latest/reference/conanfile_txt.html#generators) or using the **generators** attribute in the [conanfile.py](https://docs.conan.io/en/latest/reference/conanfile/attributes.html#generators). Here, there is some basic information you can use to integrate **zlib** in your own project. For more detailed information, please [check the Conan documentation](https://docs.conan.io/en/latest/getting_started.html).
 
 
 
 <br>
 
-## Using re2 with CMake
+## Using zlib with CMake
 
 <br>
 
@@ -27,15 +27,15 @@ Conan integrates with different build systems. You can declare which build syste
 
 <br>
 
-* [CMakeDeps](https://docs.conan.io/en/latest/reference/conanfile/tools/cmake/cmakedeps.html): generates information about where the **re2** library and its dependencies  are installed together with other information like version, flags, and directory data or configuration. CMake will use this files when you invoke ``find_package()`` in your *CMakeLists.txt*.
+* [CMakeDeps](https://docs.conan.io/en/latest/reference/conanfile/tools/cmake/cmakedeps.html): generates information about where the **zlib** library and its dependencies  are installed together with other information like version, flags, and directory data or configuration. CMake will use this files when you invoke ``find_package()`` in your *CMakeLists.txt*.
 
 * [CMakeToolchain](https://docs.conan.io/en/latest/reference/conanfile/tools/cmake/cmaketoolchain.html): generates a CMake toolchain file that you can later invoke with CMake in the command line using `-DCMAKE_TOOLCHAIN_FILE=conantoolchain.cmake`.
 
-Declare these generators in your **conanfile.txt** along with your **re2** dependency like:
+Declare these generators in your **conanfile.txt** along with your **zlib** dependency like:
 
 ```ini
 [requires]
-re2/20220601
+zlib/1.2.13
 
 [generators]
 CMakeDeps
@@ -44,35 +44,35 @@ CMakeToolchain
 
 <br>
 
-To use **re2** in a simple CMake project with this structure:
+To use **zlib** in a simple CMake project with this structure:
 
 ```shell
 .
 |-- CMakeLists.txt
 |-- conanfile.txt
 `-- src
-    `-- main..cpp
+    `-- main..c
 ```
 
 <br>
 
-Your **CMakeLists.txt** could look similar to this, using the global **re2::re2** CMake's target:
+Your **CMakeLists.txt** could look similar to this, using the global **ZLIB::ZLIB** CMake's target:
 
 ```cmake
 cmake_minimum_required(VERSION 3.15)
-project(re2_project CXX)
+project(zlib_project C)
 
-find_package(re2)
+find_package(ZLIB)
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME} src/main.c)
 
 # Use the global target
-target_link_libraries(${PROJECT_NAME} re2::re2)
+target_link_libraries(${PROJECT_NAME} ZLIB::ZLIB)
 ```
 
 <br>
 
-To install **re2/20220601**, its dependencies and build your project, you just have to do:
+To install **zlib/1.2.13**, its dependencies and build your project, you just have to do:
 
 ```shell
 # for Linux/macOS
@@ -95,7 +95,7 @@ $ cmake --build . --config Release
 
 <br>
 
-## Using re2 with Visual Studio
+## Using zlib with Visual Studio
 
 <br>
 
@@ -103,15 +103,15 @@ $ cmake --build . --config Release
 
 <br>
 
-* [MSBuildDeps](https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html#msbuilddeps): generates the **conandeps.props** properties file with information about where the **re2** library and its dependencies  are installed together with other information like version, flags, and directory data or configuration.
+* [MSBuildDeps](https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html#msbuilddeps): generates the **conandeps.props** properties file with information about where the **zlib** library and its dependencies  are installed together with other information like version, flags, and directory data or configuration.
 
 * [MSBuildToolchain](https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html#msbuildtoolchain): Generates the **conantoolchain.props** properties file with the current package configuration, settings, and options.
 
-Declare these generators in your **conanfile.txt** along with your **re2** dependency like:
+Declare these generators in your **conanfile.txt** along with your **zlib** dependency like:
 
 ```ini
 [requires]
-re2/20220601
+zlib/1.2.13
 
 [generators]
 MSBuildDeps
@@ -126,7 +126,7 @@ Please, [check the Conan documentation](https://docs.conan.io/en/latest/referenc
 
 <br>
 
-## Using re2 with Autotools and pkg-config
+## Using zlib with Autotools and pkg-config
 
 <br>
 
@@ -136,13 +136,13 @@ Please, [check the Conan documentation](https://docs.conan.io/en/latest/referenc
 
 * [AutotoolsToolchain](https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/autotoolstoolchain.html): generates the **conanautotoolstoolchain.sh/bat** script translating information from the current package configuration, settings, and options setting some enviroment variables for Autotools like: ``CPPFLAGS``, ``CXXFLAGS``, ``CFLAGS`` and ``LDFLAGS``. It will also generate a ``deactivate_conanautotoolstoolchain.sh/bat`` so you can restore your environment.
 
-* [AutotoolsDeps](https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/autotoolsdeps.html): generates the **conanautotoolsdeps.sh/bat** script with information about where the **re2** library and its dependencies  are installed together with other information like version, flags, and directory data or configuration. This is done setting some enviroment variables for Autotools like: ``LIBS``, ``CPPFLAGS``,``CXXFLAGS``, ``CFLAGS`` and ``LDFLAGS``.  It will also generate a ``deactivate_conanautotoolsdeps.sh/bat`` so you can restore your environment.
+* [AutotoolsDeps](https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/autotoolsdeps.html): generates the **conanautotoolsdeps.sh/bat** script with information about where the **zlib** library and its dependencies  are installed together with other information like version, flags, and directory data or configuration. This is done setting some enviroment variables for Autotools like: ``LIBS``, ``CPPFLAGS``,``CXXFLAGS``, ``CFLAGS`` and ``LDFLAGS``.  It will also generate a ``deactivate_conanautotoolsdeps.sh/bat`` so you can restore your environment.
 
-Declare these generators in your **conanfile.txt** along with your **re2** dependency like:
+Declare these generators in your **conanfile.txt** along with your **zlib** dependency like:
 
 ```ini
 [requires]
-re2/20220601
+zlib/1.2.13
 
 [generators]
 AutotoolsToolchain
@@ -172,7 +172,7 @@ $ source deactivate_conanautotoolsdeps.sh
 
 <br>
 
-* [PkgConfigDeps](https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/pkgconfigdeps.html): generates the **re2.pc** file (and the ones corresponding to **re2** dependencies) with information about the dependencies that can be later used by the **pkg-config** tool pkg-config to collect data about the libraries Conan installed.
+* [PkgConfigDeps](https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/pkgconfigdeps.html): generates the **zlib.pc** file (and the ones corresponding to **zlib** dependencies) with information about the dependencies that can be later used by the **pkg-config** tool pkg-config to collect data about the libraries Conan installed.
 
 <br>
 
@@ -180,7 +180,7 @@ You can use this generator instead of the **AutotoolsDeps** one:
 
 ```ini
 [requires]
-re2/20220601
+zlib/1.2.13
 
 [generators]
 AutotoolsToolchain
@@ -196,9 +196,9 @@ $ conan install .
 # set the environment variables for Autotools
 $ source conanautotoolstoolchain.sh
 
-$ export CPPFLAGS="$CPPFLAGS $(pkg-config --cflags re2)"
-$ export LIBS="$LIBS $(pkg-config --libs-only-l re2)"
-$ export LDFLAGS="$LDFLAGS $(pkg-config --libs-only-L --libs-only-other re2)"
+$ export CPPFLAGS="$CPPFLAGS $(pkg-config --cflags zlib)"
+$ export LIBS="$LIBS $(pkg-config --libs-only-l zlib)"
+$ export LDFLAGS="$LDFLAGS $(pkg-config --libs-only-L --libs-only-other zlib)"
 
 $ ./configure
 $ make
@@ -225,15 +225,13 @@ Please, [check the Conan documentation](https://docs.conan.io/en/latest/referenc
 
 <br>
 
-## Exposed header files for re2
+## Exposed header files for zlib
 
 <br>
 
 ```cpp
-#include <re2/filtered_re2.h>
-#include <re2/set.h>
-#include <re2/stringpiece.h>
-#include <re2/re2.h>
+#include <zconf.h>
+#include <zlib.h>
 ```
 
 <br>
