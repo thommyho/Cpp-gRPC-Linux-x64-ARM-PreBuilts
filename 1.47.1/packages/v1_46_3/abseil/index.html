@@ -1,0 +1,2391 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Instruction and documentation to set up gRPC using CONAN Packages">
+      
+      
+        <meta name="author" content="Thomas Hochstrasser">
+      
+      
+        <link rel="canonical" href="https://github.com/thommyho/Cpp-gRPC-Linux-x64-ARM-PreBuilts/1.47.1/packages/v1_46_3/abseil/">
+      
+      
+        <link rel="prev" href="../table.html">
+      
+      
+        <link rel="next" href="../c-ares/">
+      
+      <link rel="icon" href="../../../_assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
+    
+    
+      
+        <title>abseil - Using Pre-Built packages of gRPC using CONAN</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=arial,+sans-serif:300,300i,400,400i,700,700i%7Cmonospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"arial, sans-serif";--md-code-font:"monospace"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../_assets/user.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#abseil202206230" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../../..">
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Using Pre-Built packages of gRPC using CONAN" class="md-header__button md-logo" aria-label="Using Pre-Built packages of gRPC using CONAN" data-md-component="logo">
+      
+  <img src="../../../_assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Using Pre-Built packages of gRPC using CONAN
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              abseil
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/thommyho/Cpp-gRPC-Linux-x64-ARM-PreBuilts" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    thommyho/Cpp-gRPC-Linux-x64-ARM-PreBuilts
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Using Pre-Built packages of gRPC using CONAN" class="md-nav__button md-logo" aria-label="Using Pre-Built packages of gRPC using CONAN" data-md-component="logo">
+      
+  <img src="../../../_assets/logo.svg" alt="logo">
+
+    </a>
+    Using Pre-Built packages of gRPC using CONAN
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/thommyho/Cpp-gRPC-Linux-x64-ARM-PreBuilts" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    thommyho/Cpp-gRPC-Linux-x64-ARM-PreBuilts
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Information
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../list/" class="md-nav__link">
+        Release-Table
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Version
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Version
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          v1.47.1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          v1.47.1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/grpc/" class="md-nav__link">
+        gRPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/table.html" class="md-nav__link">
+        Dependency-Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+          Dependencies-Packages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dependencies-Packages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/abseil/" class="md-nav__link">
+        abseil
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/c-ares/" class="md-nav__link">
+        c-ares
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/googleapis/" class="md-nav__link">
+        googleapis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/grpc-proto/" class="md-nav__link">
+        grpc-proto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/openssl/" class="md-nav__link">
+        openssl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/protobuf/" class="md-nav__link">
+        protobuf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/re2/" class="md-nav__link">
+        re2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/zlib/" class="md-nav__link">
+        zlib
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          v1.46.3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          v1.46.3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grpc/" class="md-nav__link">
+        gRPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../table.html" class="md-nav__link">
+        Dependency-Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+          Dependencies-Packages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dependencies-Packages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          abseil
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        abseil
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-abseil-conan-package" class="md-nav__link">
+    Using the abseil Conan Package
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-abseil-with-cmake" class="md-nav__link">
+    Using abseil with CMake
+  </a>
+  
+    <nav class="md-nav" aria-label="Using abseil with CMake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conan-cmake-generators" class="md-nav__link">
+    Conan CMake generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declared-cmake-build-modules" class="md-nav__link">
+    Declared CMake build modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Declared CMake build modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#libcmakeconan_trickcxx_stdcmake" class="md-nav__link">
+    lib/cmake/conan_trick/cxx_std.cmake
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-abseil-with-visual-studio" class="md-nav__link">
+    Using abseil with Visual Studio
+  </a>
+  
+    <nav class="md-nav" aria-label="Using abseil with Visual Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-conan-generators" class="md-nav__link">
+    Visual Studio Conan generators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-abseil-with-autotools-and-pkg-config" class="md-nav__link">
+    Using abseil with Autotools and pkg-config
+  </a>
+  
+    <nav class="md-nav" aria-label="Using abseil with Autotools and pkg-config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autotools-conan-generators" class="md-nav__link">
+    Autotools Conan generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pkg-config-conan-generator" class="md-nav__link">
+    pkg-config Conan generator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-build-systems" class="md-nav__link">
+    Other build systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declared-components-for-abseil" class="md-nav__link">
+    Declared components for abseil
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exposed-header-files-for-abseil" class="md-nav__link">
+    Exposed header files for abseil
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    ---
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c-ares/" class="md-nav__link">
+        c-ares
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../googleapis/" class="md-nav__link">
+        googleapis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grpc-proto/" class="md-nav__link">
+        grpc-proto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openssl/" class="md-nav__link">
+        openssl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protobuf/" class="md-nav__link">
+        protobuf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../re2/" class="md-nav__link">
+        re2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zlib/" class="md-nav__link">
+        zlib
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-abseil-conan-package" class="md-nav__link">
+    Using the abseil Conan Package
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-abseil-with-cmake" class="md-nav__link">
+    Using abseil with CMake
+  </a>
+  
+    <nav class="md-nav" aria-label="Using abseil with CMake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conan-cmake-generators" class="md-nav__link">
+    Conan CMake generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declared-cmake-build-modules" class="md-nav__link">
+    Declared CMake build modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Declared CMake build modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#libcmakeconan_trickcxx_stdcmake" class="md-nav__link">
+    lib/cmake/conan_trick/cxx_std.cmake
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-abseil-with-visual-studio" class="md-nav__link">
+    Using abseil with Visual Studio
+  </a>
+  
+    <nav class="md-nav" aria-label="Using abseil with Visual Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-conan-generators" class="md-nav__link">
+    Visual Studio Conan generators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-abseil-with-autotools-and-pkg-config" class="md-nav__link">
+    Using abseil with Autotools and pkg-config
+  </a>
+  
+    <nav class="md-nav" aria-label="Using abseil with Autotools and pkg-config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autotools-conan-generators" class="md-nav__link">
+    Autotools Conan generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pkg-config-conan-generator" class="md-nav__link">
+    pkg-config Conan generator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-build-systems" class="md-nav__link">
+    Other build systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declared-components-for-abseil" class="md-nav__link">
+    Declared components for abseil
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exposed-header-files-for-abseil" class="md-nav__link">
+    Exposed header files for abseil
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    ---
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="abseil202206230">abseil/20220623.0<a class="headerlink" href="#abseil202206230" title="Permanent link">&para;</a></h1>
+<hr />
+<p><br></p>
+<h2 id="using-the-abseil-conan-package">Using the abseil Conan Package<a class="headerlink" href="#using-the-abseil-conan-package" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<p>Conan integrates with different build systems. You can declare which build system you want your project to use setting in the <strong>[generators]</strong> section of the <a href="https://docs.conan.io/en/latest/reference/conanfile_txt.html#generators">conanfile.txt</a> or using the <strong>generators</strong> attribute in the <a href="https://docs.conan.io/en/latest/reference/conanfile/attributes.html#generators">conanfile.py</a>. Here, there is some basic information you can use to integrate <strong>abseil</strong> in your own project. For more detailed information, please <a href="https://docs.conan.io/en/latest/getting_started.html">check the Conan documentation</a>.</p>
+<p><br></p>
+<h2 id="using-abseil-with-cmake">Using abseil with CMake<a class="headerlink" href="#using-abseil-with-cmake" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h3 id="conan-cmake-generators"><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/cmake.html">Conan CMake generators</a><a class="headerlink" href="#conan-cmake-generators" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<ul>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/cmake/cmakedeps.html">CMakeDeps</a>: generates information about where the <strong>abseil</strong> library and its dependencies  are installed together with other information like version, flags, and directory data or configuration. CMake will use this files when you invoke <code>find_package()</code> in your <em>CMakeLists.txt</em>.</p>
+</li>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/cmake/cmaketoolchain.html">CMakeToolchain</a>: generates a CMake toolchain file that you can later invoke with CMake in the command line using <code>-DCMAKE_TOOLCHAIN_FILE=conantoolchain.cmake</code>.</p>
+</li>
+</ul>
+<p>Declare these generators in your <strong>conanfile.txt</strong> along with your <strong>abseil</strong> dependency like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[requires]</span>
+<span class="na">abseil/20220623.0</span>
+
+<span class="k">[generators]</span>
+<span class="na">CMakeDeps</span>
+<span class="na">CMakeToolchain</span>
+</code></pre></div>
+<p><br></p>
+<p>To use <strong>abseil</strong> in a simple CMake project with this structure:</p>
+<div class="highlight"><pre><span></span><code>.
+<span class="p">|</span>--<span class="w"> </span>CMakeLists.txt
+<span class="p">|</span>--<span class="w"> </span>conanfile.txt
+<span class="sb">`</span>--<span class="w"> </span>src
+<span class="w">    </span><span class="sb">`</span>--<span class="w"> </span>main..cpp
+</code></pre></div>
+<p><br></p>
+<p>Your <strong>CMakeLists.txt</strong> could look similar to this, using the global <strong>abseil::abseil</strong> CMake's target:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.15</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">abseil_project</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">absl</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">src/main.cpp</span><span class="p">)</span>
+
+<span class="c"># Use the global target</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">abseil::abseil</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<p>To install <strong>abseil/20220623.0</strong>, its dependencies and build your project, you just have to do:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># for Linux/macOS</span>
+$<span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--install-folder<span class="w"> </span>cmake-build-release<span class="w"> </span>--build<span class="o">=</span>missing
+$<span class="w"> </span>cmake<span class="w"> </span>.<span class="w"> </span>-DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>cmake-build-release/conan_toolchain.cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+$<span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>.
+
+<span class="c1"># for Windows and Visual Studio 2017</span>
+$<span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--output-folder<span class="w"> </span>cmake-build<span class="w"> </span>--build<span class="o">=</span>missing
+$<span class="w"> </span>cmake<span class="w"> </span>.<span class="w"> </span>-G<span class="w"> </span><span class="s2">&quot;Visual Studio 15 2017&quot;</span><span class="w"> </span>-DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>cmake-build/conan_toolchain.cmake
+$<span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>Release
+</code></pre></div>
+<p><br></p>
+<p>As the abseil Conan package defines components, you can link only the desired parts of the library in your project. For example, linking only with the abseil <strong>absl_atomic_hook</strong> component, through the <strong>absl::atomic_hook</strong> target.</p>
+<div class="highlight"><pre><span></span><code><span class="err">...</span>
+<span class="c"># Link just to abseil absl_atomic_hook component</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">absl::atomic_hook</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<p>To check all the available components for <strong>abseil</strong> Conan package, please check the dedicated section at the end of this document.</p>
+<p><br></p>
+<h3 id="declared-cmake-build-modules">Declared CMake build modules<a class="headerlink" href="#declared-cmake-build-modules" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h4 id="libcmakeconan_trickcxx_stdcmake">lib/cmake/conan_trick/cxx_std.cmake<a class="headerlink" href="#libcmakeconan_trickcxx_stdcmake" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::atomic_hook</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::errno_saver</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::log_severity</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::raw_logging_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::spinlock_wait</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::config</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::dynamic_annotations</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::core_headers</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::malloc_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::base_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::base</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::throw_delegate</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::pretty_function</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::endian</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::scoped_set_env</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::strerror</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::fast_type_id</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::prefetch</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::algorithm</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::algorithm_container</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cleanup_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cleanup</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::btree</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::compressed_tuple</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::fixed_array</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::inlined_vector_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::inlined_vector</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::counting_allocator</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flat_hash_map</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flat_hash_set</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::node_hash_map</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::node_hash_set</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::container_memory</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::hash_function_defaults</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::hash_policy_traits</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::hashtablez_sampler</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::hashtable_debug</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::hashtable_debug_hooks</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::node_slot_policy</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::raw_hash_map</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::container_common</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::raw_hash_set</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::layout</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::stacktrace</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::symbolize</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::examine_stack</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::failure_signal_handler</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::debugging_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::demangle_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::leak_check</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::debugging</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_path_util</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_program_name</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_config</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_marshalling</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_commandlineflag_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_commandlineflag</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_private_handle_accessor</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_reflection</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_usage_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_usage</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::flags_parse</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::any_invocable</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::bind_front</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::function_ref</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::hash</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::city</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::low_level_hash</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::memory</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::type_traits</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::meta</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::bits</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::int128</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::numeric</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::numeric_representation</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::sample_recorder</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::exponential_biased</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::periodic_sampler</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_random</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_bit_gen_ref</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_mock_helpers</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_distributions</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_seed_gen_exception</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_seed_sequences</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_traits</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_distribution_caller</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_fast_uniform_bits</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_seed_material</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_pool_urbg</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_salted_seed_seq</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_iostream_state_saver</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_generate_real</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_wide_multiply</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_fastmath</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_nonsecure_base</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_pcg_engine</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_randen_engine</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_platform</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_randen</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_randen_slow</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_randen_hwaes</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_randen_hwaes_impl</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_distribution_test_util</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::random_internal_uniform_helper</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::status</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::statusor</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::strings</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::strings_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::str_format</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::str_format_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cord_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cordz_update_tracker</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cordz_functions</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cordz_statistics</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cordz_handle</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cordz_info</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cordz_sample_token</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cordz_update_scope</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::cord</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::graphcycles_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::kernel_timeout_internal</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::synchronization</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::time</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::civil_time</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::time_zone</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::any</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::bad_any_cast</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::bad_any_cast_impl</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::span</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::optional</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::bad_optional_access</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::bad_variant_access</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::variant</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::compare</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+<span class="nb">target_compile_features</span><span class="p">(</span><span class="s">absl::utility</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="s">cxx_std_11</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="using-abseil-with-visual-studio">Using abseil with Visual Studio<a class="headerlink" href="#using-abseil-with-visual-studio" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h3 id="visual-studio-conan-generators"><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html">Visual Studio Conan generators</a><a class="headerlink" href="#visual-studio-conan-generators" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<ul>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html#msbuilddeps">MSBuildDeps</a>: generates the <strong>conandeps.props</strong> properties file with information about where the <strong>abseil</strong> library and its dependencies  are installed together with other information like version, flags, and directory data or configuration.</p>
+</li>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html#msbuildtoolchain">MSBuildToolchain</a>: Generates the <strong>conantoolchain.props</strong> properties file with the current package configuration, settings, and options.</p>
+</li>
+</ul>
+<p>Declare these generators in your <strong>conanfile.txt</strong> along with your <strong>abseil</strong> dependency like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[requires]</span>
+<span class="na">abseil/20220623.0</span>
+
+<span class="k">[generators]</span>
+<span class="na">MSBuildDeps</span>
+<span class="na">MSBuildToolchain</span>
+</code></pre></div>
+<p><br></p>
+<p>Please, <a href="https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html">check the Conan documentation</a> for more detailed information on how to add these properties files to your Visual Studio projects.</p>
+<p><br></p>
+<h2 id="using-abseil-with-autotools-and-pkg-config">Using abseil with Autotools and pkg-config<a class="headerlink" href="#using-abseil-with-autotools-and-pkg-config" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h3 id="autotools-conan-generators"><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/gnu.html">Autotools Conan generators</a><a class="headerlink" href="#autotools-conan-generators" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<ul>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/autotoolstoolchain.html">AutotoolsToolchain</a>: generates the <strong>conanautotoolstoolchain.sh/bat</strong> script translating information from the current package configuration, settings, and options setting some enviroment variables for Autotools like: <code>CPPFLAGS</code>, <code>CXXFLAGS</code>, <code>CFLAGS</code> and <code>LDFLAGS</code>. It will also generate a <code>deactivate_conanautotoolstoolchain.sh/bat</code> so you can restore your environment.</p>
+</li>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/autotoolsdeps.html">AutotoolsDeps</a>: generates the <strong>conanautotoolsdeps.sh/bat</strong> script with information about where the <strong>abseil</strong> library and its dependencies  are installed together with other information like version, flags, and directory data or configuration. This is done setting some enviroment variables for Autotools like: <code>LIBS</code>, <code>CPPFLAGS</code>,<code>CXXFLAGS</code>, <code>CFLAGS</code> and <code>LDFLAGS</code>.  It will also generate a <code>deactivate_conanautotoolsdeps.sh/bat</code> so you can restore your environment.</p>
+</li>
+</ul>
+<p>Declare these generators in your <strong>conanfile.txt</strong> along with your <strong>abseil</strong> dependency like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[requires]</span>
+<span class="na">abseil/20220623.0</span>
+
+<span class="k">[generators]</span>
+<span class="na">AutotoolsToolchain</span>
+<span class="na">AutotoolsDeps</span>
+</code></pre></div>
+<p><br></p>
+<p>Then, building your project is as easy as:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.
+<span class="c1"># set the environment variables for Autotools</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>conanautotoolstoolchain.sh
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>conanautotoolsdeps.sh
+$<span class="w"> </span>./configure
+$<span class="w"> </span>make
+
+<span class="c1"># restore the environment after the build is completed</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>deactivate_conanautotoolstoolchain.sh
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>deactivate_conanautotoolsdeps.sh
+</code></pre></div>
+<p><br></p>
+<h3 id="pkg-config-conan-generator"><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/pkgconfigdeps.html">pkg-config Conan generator</a><a class="headerlink" href="#pkg-config-conan-generator" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<ul>
+<li><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/pkgconfigdeps.html">PkgConfigDeps</a>: generates the <strong>abseil.pc</strong> file (and the ones corresponding to <strong>abseil</strong> dependencies) with information about the dependencies that can be later used by the <strong>pkg-config</strong> tool pkg-config to collect data about the libraries Conan installed.</li>
+</ul>
+<p><br></p>
+<p>You can use this generator instead of the <strong>AutotoolsDeps</strong> one:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[requires]</span>
+<span class="na">abseil/20220623.0</span>
+
+<span class="k">[generators]</span>
+<span class="na">AutotoolsToolchain</span>
+<span class="na">PkgConfigDeps</span>
+</code></pre></div>
+<p><br></p>
+<p>And then using <strong>pkg-config</strong> to set the environment variables you want, like:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.
+<span class="c1"># set the environment variables for Autotools</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>conanautotoolstoolchain.sh
+
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">CPPFLAGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CPPFLAGS</span><span class="s2"> </span><span class="k">$(</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>abseil<span class="k">)</span><span class="s2">&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">LIBS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LIBS</span><span class="s2"> </span><span class="k">$(</span>pkg-config<span class="w"> </span>--libs-only-l<span class="w"> </span>abseil<span class="k">)</span><span class="s2">&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LDFLAGS</span><span class="s2"> </span><span class="k">$(</span>pkg-config<span class="w"> </span>--libs-only-L<span class="w"> </span>--libs-only-other<span class="w"> </span>abseil<span class="k">)</span><span class="s2">&quot;</span>
+
+$<span class="w"> </span>./configure
+$<span class="w"> </span>make
+
+<span class="c1"># restore the environment after the build is completed</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>deactivate_conanautotoolstoolchain.sh
+</code></pre></div>
+<p><br></p>
+<p>As the abseil Conan package defines components you can use them to link only that desired part of the library in your project.  To check all the available components for <strong>abseil</strong> Conan package, and the corresponding <em>.pc</em> files names, please check the dedicated section at the end of this document.</p>
+<p><br></p>
+<h2 id="other-build-systems">Other build systems<a class="headerlink" href="#other-build-systems" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<p>Please, <a href="https://docs.conan.io/en/latest/reference/conanfile/tools.html">check the Conan documentation</a> for other integrations besides the ones listed in this document.</p>
+<p><br></p>
+<h2 id="declared-components-for-abseil">Declared components for abseil<a class="headerlink" href="#declared-components-for-abseil" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<p>These are all the declared components for the <strong>abseil</strong> Conan package:
+* Component <strong>absl_atomic_hook</strong>:
+  * CMake target name: <code>absl::atomic_hook</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_atomic_hook.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>
+* Component <strong>absl_errno_saver</strong>:
+  * CMake target name: <code>absl::errno_saver</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_errno_saver.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_log_severity</strong>:
+  * CMake target name: <code>absl::log_severity</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_log_severity.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>
+  * Links to libraries: <strong>absl_log_severity</strong>
+* Component <strong>absl_raw_logging_internal</strong>:
+  * CMake target name: <code>absl::raw_logging_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_raw_logging_internal.pc</strong>
+  * Requires other components: <strong>absl_atomic_hook</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_errno_saver</strong>, <strong>absl_log_severity</strong>
+  * Links to libraries: <strong>absl_raw_logging_internal</strong>
+* Component <strong>absl_spinlock_wait</strong>:
+  * CMake target name: <code>absl::spinlock_wait</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_spinlock_wait.pc</strong>
+  * Requires other components: <strong>absl_base_internal</strong>, <strong>absl_core_headers</strong>, <strong>absl_errno_saver</strong>
+  * Links to libraries: <strong>absl_spinlock_wait</strong>
+* Component <strong>absl_config</strong>:
+  * CMake target name: <code>absl::config</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_config.pc</strong>
+* Component <strong>absl_dynamic_annotations</strong>:
+  * CMake target name: <code>absl::dynamic_annotations</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_dynamic_annotations.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_core_headers</strong>:
+  * CMake target name: <code>absl::core_headers</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_core_headers.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_malloc_internal</strong>:
+  * CMake target name: <code>absl::malloc_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_malloc_internal.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_base_internal</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_dynamic_annotations</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_malloc_internal</strong>
+  * Systems libs: <strong>pthread</strong>
+* Component <strong>absl_base_internal</strong>:
+  * CMake target name: <code>absl::base_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_base_internal.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_base</strong>:
+  * CMake target name: <code>absl::base</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_base.pc</strong>
+  * Requires other components: <strong>absl_atomic_hook</strong>, <strong>absl_base_internal</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_dynamic_annotations</strong>, <strong>absl_log_severity</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_spinlock_wait</strong>, <strong>absl_type_traits</strong>
+  * Links to libraries: <strong>absl_base</strong>
+  * Systems libs: <strong>pthread</strong>, <strong>rt</strong>
+* Component <strong>absl_throw_delegate</strong>:
+  * CMake target name: <code>absl::throw_delegate</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_throw_delegate.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_throw_delegate</strong>
+* Component <strong>absl_pretty_function</strong>:
+  * CMake target name: <code>absl::pretty_function</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_pretty_function.pc</strong>
+* Component <strong>absl_endian</strong>:
+  * CMake target name: <code>absl::endian</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_endian.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>
+* Component <strong>absl_scoped_set_env</strong>:
+  * CMake target name: <code>absl::scoped_set_env</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_scoped_set_env.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_scoped_set_env</strong>
+* Component <strong>absl_strerror</strong>:
+  * CMake target name: <code>absl::strerror</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_strerror.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_errno_saver</strong>
+  * Links to libraries: <strong>absl_strerror</strong>
+* Component <strong>absl_fast_type_id</strong>:
+  * CMake target name: <code>absl::fast_type_id</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_fast_type_id.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_prefetch</strong>:
+  * CMake target name: <code>absl::prefetch</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_prefetch.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_algorithm</strong>:
+  * CMake target name: <code>absl::algorithm</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_algorithm.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_algorithm_container</strong>:
+  * CMake target name: <code>absl::algorithm_container</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_algorithm_container.pc</strong>
+  * Requires other components: <strong>absl_algorithm</strong>, <strong>absl_core_headers</strong>, <strong>absl_meta</strong>
+* Component <strong>absl_cleanup_internal</strong>:
+  * CMake target name: <code>absl::cleanup_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cleanup_internal.pc</strong>
+  * Requires other components: <strong>absl_base_internal</strong>, <strong>absl_core_headers</strong>, <strong>absl_utility</strong>
+* Component <strong>absl_cleanup</strong>:
+  * CMake target name: <code>absl::cleanup</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cleanup.pc</strong>
+  * Requires other components: <strong>absl_cleanup_internal</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>
+* Component <strong>absl_btree</strong>:
+  * CMake target name: <code>absl::btree</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_btree.pc</strong>
+  * Requires other components: <strong>absl_container_common</strong>, <strong>absl_compare</strong>, <strong>absl_compressed_tuple</strong>, <strong>absl_container_memory</strong>, <strong>absl_cord</strong>, <strong>absl_core_headers</strong>, <strong>absl_layout</strong>, <strong>absl_memory</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_strings</strong>, <strong>absl_throw_delegate</strong>, <strong>absl_type_traits</strong>, <strong>absl_utility</strong>
+* Component <strong>absl_compressed_tuple</strong>:
+  * CMake target name: <code>absl::compressed_tuple</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_compressed_tuple.pc</strong>
+  * Requires other components: <strong>absl_utility</strong>
+* Component <strong>absl_fixed_array</strong>:
+  * CMake target name: <code>absl::fixed_array</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_fixed_array.pc</strong>
+  * Requires other components: <strong>absl_compressed_tuple</strong>, <strong>absl_algorithm</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_dynamic_annotations</strong>, <strong>absl_throw_delegate</strong>, <strong>absl_memory</strong>
+* Component <strong>absl_inlined_vector_internal</strong>:
+  * CMake target name: <code>absl::inlined_vector_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_inlined_vector_internal.pc</strong>
+  * Requires other components: <strong>absl_compressed_tuple</strong>, <strong>absl_core_headers</strong>, <strong>absl_memory</strong>, <strong>absl_span</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_inlined_vector</strong>:
+  * CMake target name: <code>absl::inlined_vector</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_inlined_vector.pc</strong>
+  * Requires other components: <strong>absl_algorithm</strong>, <strong>absl_core_headers</strong>, <strong>absl_inlined_vector_internal</strong>, <strong>absl_throw_delegate</strong>, <strong>absl_memory</strong>
+* Component <strong>absl_counting_allocator</strong>:
+  * CMake target name: <code>absl::counting_allocator</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_counting_allocator.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_flat_hash_map</strong>:
+  * CMake target name: <code>absl::flat_hash_map</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flat_hash_map.pc</strong>
+  * Requires other components: <strong>absl_container_memory</strong>, <strong>absl_core_headers</strong>, <strong>absl_hash_function_defaults</strong>, <strong>absl_raw_hash_map</strong>, <strong>absl_algorithm_container</strong>, <strong>absl_memory</strong>
+* Component <strong>absl_flat_hash_set</strong>:
+  * CMake target name: <code>absl::flat_hash_set</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flat_hash_set.pc</strong>
+  * Requires other components: <strong>absl_container_memory</strong>, <strong>absl_hash_function_defaults</strong>, <strong>absl_raw_hash_set</strong>, <strong>absl_algorithm_container</strong>, <strong>absl_core_headers</strong>, <strong>absl_memory</strong>
+* Component <strong>absl_node_hash_map</strong>:
+  * CMake target name: <code>absl::node_hash_map</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_node_hash_map.pc</strong>
+  * Requires other components: <strong>absl_container_memory</strong>, <strong>absl_core_headers</strong>, <strong>absl_hash_function_defaults</strong>, <strong>absl_node_slot_policy</strong>, <strong>absl_raw_hash_map</strong>, <strong>absl_algorithm_container</strong>, <strong>absl_memory</strong>
+* Component <strong>absl_node_hash_set</strong>:
+  * CMake target name: <code>absl::node_hash_set</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_node_hash_set.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>, <strong>absl_hash_function_defaults</strong>, <strong>absl_node_slot_policy</strong>, <strong>absl_raw_hash_set</strong>, <strong>absl_algorithm_container</strong>, <strong>absl_memory</strong>
+* Component <strong>absl_container_memory</strong>:
+  * CMake target name: <code>absl::container_memory</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_container_memory.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_memory</strong>, <strong>absl_type_traits</strong>, <strong>absl_utility</strong>
+* Component <strong>absl_hash_function_defaults</strong>:
+  * CMake target name: <code>absl::hash_function_defaults</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_hash_function_defaults.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_cord</strong>, <strong>absl_hash</strong>, <strong>absl_strings</strong>
+* Component <strong>absl_hash_policy_traits</strong>:
+  * CMake target name: <code>absl::hash_policy_traits</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_hash_policy_traits.pc</strong>
+  * Requires other components: <strong>absl_meta</strong>
+* Component <strong>absl_hashtablez_sampler</strong>:
+  * CMake target name: <code>absl::hashtablez_sampler</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_hashtablez_sampler.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_config</strong>, <strong>absl_exponential_biased</strong>, <strong>absl_sample_recorder</strong>, <strong>absl_synchronization</strong>
+  * Links to libraries: <strong>absl_hashtablez_sampler</strong>
+* Component <strong>absl_hashtable_debug</strong>:
+  * CMake target name: <code>absl::hashtable_debug</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_hashtable_debug.pc</strong>
+  * Requires other components: <strong>absl_hashtable_debug_hooks</strong>
+* Component <strong>absl_hashtable_debug_hooks</strong>:
+  * CMake target name: <code>absl::hashtable_debug_hooks</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_hashtable_debug_hooks.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_node_slot_policy</strong>:
+  * CMake target name: <code>absl::node_slot_policy</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_node_slot_policy.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_raw_hash_map</strong>:
+  * CMake target name: <code>absl::raw_hash_map</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_raw_hash_map.pc</strong>
+  * Requires other components: <strong>absl_container_memory</strong>, <strong>absl_raw_hash_set</strong>, <strong>absl_throw_delegate</strong>
+* Component <strong>absl_container_common</strong>:
+  * CMake target name: <code>absl::container_common</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_container_common.pc</strong>
+  * Requires other components: <strong>absl_type_traits</strong>
+* Component <strong>absl_raw_hash_set</strong>:
+  * CMake target name: <code>absl::raw_hash_set</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_raw_hash_set.pc</strong>
+  * Requires other components: <strong>absl_bits</strong>, <strong>absl_compressed_tuple</strong>, <strong>absl_config</strong>, <strong>absl_container_common</strong>, <strong>absl_container_memory</strong>, <strong>absl_core_headers</strong>, <strong>absl_endian</strong>, <strong>absl_hash_policy_traits</strong>, <strong>absl_hashtable_debug_hooks</strong>, <strong>absl_memory</strong>, <strong>absl_meta</strong>, <strong>absl_optional</strong>, <strong>absl_prefetch</strong>, <strong>absl_utility</strong>, <strong>absl_hashtablez_sampler</strong>
+  * Links to libraries: <strong>absl_raw_hash_set</strong>
+* Component <strong>absl_layout</strong>:
+  * CMake target name: <code>absl::layout</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_layout.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_meta</strong>, <strong>absl_strings</strong>, <strong>absl_span</strong>, <strong>absl_utility</strong>
+* Component <strong>absl_stacktrace</strong>:
+  * CMake target name: <code>absl::stacktrace</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_stacktrace.pc</strong>
+  * Requires other components: <strong>absl_debugging_internal</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>
+  * Links to libraries: <strong>absl_stacktrace</strong>
+* Component <strong>absl_symbolize</strong>:
+  * CMake target name: <code>absl::symbolize</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_symbolize.pc</strong>
+  * Requires other components: <strong>absl_debugging_internal</strong>, <strong>absl_demangle_internal</strong>, <strong>absl_base</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_dynamic_annotations</strong>, <strong>absl_malloc_internal</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_strings</strong>
+  * Links to libraries: <strong>absl_symbolize</strong>
+* Component <strong>absl_examine_stack</strong>:
+  * CMake target name: <code>absl::examine_stack</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_examine_stack.pc</strong>
+  * Requires other components: <strong>absl_stacktrace</strong>, <strong>absl_symbolize</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_examine_stack</strong>
+* Component <strong>absl_failure_signal_handler</strong>:
+  * CMake target name: <code>absl::failure_signal_handler</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_failure_signal_handler.pc</strong>
+  * Requires other components: <strong>absl_examine_stack</strong>, <strong>absl_stacktrace</strong>, <strong>absl_base</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_failure_signal_handler</strong>
+* Component <strong>absl_debugging_internal</strong>:
+  * CMake target name: <code>absl::debugging_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_debugging_internal.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>, <strong>absl_config</strong>, <strong>absl_dynamic_annotations</strong>, <strong>absl_errno_saver</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_debugging_internal</strong>
+* Component <strong>absl_demangle_internal</strong>:
+  * CMake target name: <code>absl::demangle_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_demangle_internal.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_core_headers</strong>
+  * Links to libraries: <strong>absl_demangle_internal</strong>
+* Component <strong>absl_leak_check</strong>:
+  * CMake target name: <code>absl::leak_check</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_leak_check.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>
+  * Links to libraries: <strong>absl_leak_check</strong>
+* Component <strong>absl_debugging</strong>:
+  * CMake target name: <code>absl::debugging</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_debugging.pc</strong>
+  * Requires other components: <strong>absl_stacktrace</strong>, <strong>absl_leak_check</strong>
+* Component <strong>absl_flags_path_util</strong>:
+  * CMake target name: <code>absl::flags_path_util</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_path_util.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_strings</strong>
+* Component <strong>absl_flags_program_name</strong>:
+  * CMake target name: <code>absl::flags_program_name</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_program_name.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_flags_path_util</strong>, <strong>absl_strings</strong>, <strong>absl_synchronization</strong>
+  * Links to libraries: <strong>absl_flags_program_name</strong>
+* Component <strong>absl_flags_config</strong>:
+  * CMake target name: <code>absl::flags_config</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_config.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_flags_path_util</strong>, <strong>absl_flags_program_name</strong>, <strong>absl_core_headers</strong>, <strong>absl_strings</strong>, <strong>absl_synchronization</strong>
+  * Links to libraries: <strong>absl_flags_config</strong>
+* Component <strong>absl_flags_marshalling</strong>:
+  * CMake target name: <code>absl::flags_marshalling</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_marshalling.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_log_severity</strong>, <strong>absl_optional</strong>, <strong>absl_strings</strong>, <strong>absl_str_format</strong>
+  * Links to libraries: <strong>absl_flags_marshalling</strong>
+* Component <strong>absl_flags_commandlineflag_internal</strong>:
+  * CMake target name: <code>absl::flags_commandlineflag_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_commandlineflag_internal.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_dynamic_annotations</strong>, <strong>absl_fast_type_id</strong>
+  * Links to libraries: <strong>absl_flags_commandlineflag_internal</strong>
+* Component <strong>absl_flags_commandlineflag</strong>:
+  * CMake target name: <code>absl::flags_commandlineflag</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_commandlineflag.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_fast_type_id</strong>, <strong>absl_flags_commandlineflag_internal</strong>, <strong>absl_optional</strong>, <strong>absl_strings</strong>
+  * Links to libraries: <strong>absl_flags_commandlineflag</strong>
+* Component <strong>absl_flags_private_handle_accessor</strong>:
+  * CMake target name: <code>absl::flags_private_handle_accessor</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_private_handle_accessor.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_flags_commandlineflag</strong>, <strong>absl_flags_commandlineflag_internal</strong>, <strong>absl_strings</strong>
+  * Links to libraries: <strong>absl_flags_private_handle_accessor</strong>
+* Component <strong>absl_flags_reflection</strong>:
+  * CMake target name: <code>absl::flags_reflection</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_reflection.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_flags_commandlineflag</strong>, <strong>absl_flags_private_handle_accessor</strong>, <strong>absl_flags_config</strong>, <strong>absl_strings</strong>, <strong>absl_synchronization</strong>, <strong>absl_flat_hash_map</strong>
+  * Links to libraries: <strong>absl_flags_reflection</strong>
+* Component <strong>absl_flags_internal</strong>:
+  * CMake target name: <code>absl::flags_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_internal.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_config</strong>, <strong>absl_flags_commandlineflag</strong>, <strong>absl_flags_commandlineflag_internal</strong>, <strong>absl_flags_config</strong>, <strong>absl_flags_marshalling</strong>, <strong>absl_synchronization</strong>, <strong>absl_meta</strong>, <strong>absl_utility</strong>
+  * Links to libraries: <strong>absl_flags_internal</strong>
+* Component <strong>absl_flags</strong>:
+  * CMake target name: <code>absl::flags</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_flags_commandlineflag</strong>, <strong>absl_flags_config</strong>, <strong>absl_flags_internal</strong>, <strong>absl_flags_reflection</strong>, <strong>absl_base</strong>, <strong>absl_core_headers</strong>, <strong>absl_strings</strong>
+  * Links to libraries: <strong>absl_flags</strong>
+* Component <strong>absl_flags_usage_internal</strong>:
+  * CMake target name: <code>absl::flags_usage_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_usage_internal.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_flags_config</strong>, <strong>absl_flags</strong>, <strong>absl_flags_commandlineflag</strong>, <strong>absl_flags_internal</strong>, <strong>absl_flags_path_util</strong>, <strong>absl_flags_private_handle_accessor</strong>, <strong>absl_flags_program_name</strong>, <strong>absl_flags_reflection</strong>, <strong>absl_flat_hash_map</strong>, <strong>absl_strings</strong>, <strong>absl_synchronization</strong>
+  * Links to libraries: <strong>absl_flags_usage_internal</strong>
+* Component <strong>absl_flags_usage</strong>:
+  * CMake target name: <code>absl::flags_usage</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_usage.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_flags_usage_internal</strong>, <strong>absl_strings</strong>, <strong>absl_synchronization</strong>
+  * Links to libraries: <strong>absl_flags_usage</strong>
+* Component <strong>absl_flags_parse</strong>:
+  * CMake target name: <code>absl::flags_parse</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_flags_parse.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_flags_config</strong>, <strong>absl_flags</strong>, <strong>absl_flags_commandlineflag</strong>, <strong>absl_flags_commandlineflag_internal</strong>, <strong>absl_flags_internal</strong>, <strong>absl_flags_private_handle_accessor</strong>, <strong>absl_flags_program_name</strong>, <strong>absl_flags_reflection</strong>, <strong>absl_flags_usage</strong>, <strong>absl_strings</strong>, <strong>absl_synchronization</strong>
+  * Links to libraries: <strong>absl_flags_parse</strong>
+* Component <strong>absl_any_invocable</strong>:
+  * CMake target name: <code>absl::any_invocable</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_any_invocable.pc</strong>
+  * Requires other components: <strong>absl_base_internal</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_type_traits</strong>, <strong>absl_utility</strong>
+* Component <strong>absl_bind_front</strong>:
+  * CMake target name: <code>absl::bind_front</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_bind_front.pc</strong>
+  * Requires other components: <strong>absl_base_internal</strong>, <strong>absl_compressed_tuple</strong>
+* Component <strong>absl_function_ref</strong>:
+  * CMake target name: <code>absl::function_ref</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_function_ref.pc</strong>
+  * Requires other components: <strong>absl_base_internal</strong>, <strong>absl_core_headers</strong>, <strong>absl_meta</strong>
+* Component <strong>absl_hash</strong>:
+  * CMake target name: <code>absl::hash</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_hash.pc</strong>
+  * Requires other components: <strong>absl_city</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_endian</strong>, <strong>absl_fixed_array</strong>, <strong>absl_function_ref</strong>, <strong>absl_meta</strong>, <strong>absl_int128</strong>, <strong>absl_strings</strong>, <strong>absl_optional</strong>, <strong>absl_variant</strong>, <strong>absl_utility</strong>, <strong>absl_low_level_hash</strong>
+  * Links to libraries: <strong>absl_hash</strong>
+* Component <strong>absl_city</strong>:
+  * CMake target name: <code>absl::city</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_city.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_endian</strong>
+  * Links to libraries: <strong>absl_city</strong>
+* Component <strong>absl_low_level_hash</strong>:
+  * CMake target name: <code>absl::low_level_hash</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_low_level_hash.pc</strong>
+  * Requires other components: <strong>absl_bits</strong>, <strong>absl_config</strong>, <strong>absl_endian</strong>, <strong>absl_int128</strong>
+  * Links to libraries: <strong>absl_low_level_hash</strong>
+* Component <strong>absl_memory</strong>:
+  * CMake target name: <code>absl::memory</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_memory.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>, <strong>absl_meta</strong>
+* Component <strong>absl_type_traits</strong>:
+  * CMake target name: <code>absl::type_traits</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_type_traits.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_meta</strong>:
+  * CMake target name: <code>absl::meta</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_meta.pc</strong>
+  * Requires other components: <strong>absl_type_traits</strong>
+* Component <strong>absl_bits</strong>:
+  * CMake target name: <code>absl::bits</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_bits.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>
+* Component <strong>absl_int128</strong>:
+  * CMake target name: <code>absl::int128</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_int128.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_bits</strong>
+  * Links to libraries: <strong>absl_int128</strong>
+* Component <strong>absl_numeric</strong>:
+  * CMake target name: <code>absl::numeric</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_numeric.pc</strong>
+  * Requires other components: <strong>absl_int128</strong>
+* Component <strong>absl_numeric_representation</strong>:
+  * CMake target name: <code>absl::numeric_representation</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_numeric_representation.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_sample_recorder</strong>:
+  * CMake target name: <code>absl::sample_recorder</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_sample_recorder.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_synchronization</strong>
+* Component <strong>absl_exponential_biased</strong>:
+  * CMake target name: <code>absl::exponential_biased</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_exponential_biased.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>
+  * Links to libraries: <strong>absl_exponential_biased</strong>
+* Component <strong>absl_periodic_sampler</strong>:
+  * CMake target name: <code>absl::periodic_sampler</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_periodic_sampler.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>, <strong>absl_exponential_biased</strong>
+  * Links to libraries: <strong>absl_periodic_sampler</strong>
+* Component <strong>absl_random_random</strong>:
+  * CMake target name: <code>absl::random_random</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_random.pc</strong>
+  * Requires other components: <strong>absl_random_distributions</strong>, <strong>absl_random_internal_nonsecure_base</strong>, <strong>absl_random_internal_pcg_engine</strong>, <strong>absl_random_internal_pool_urbg</strong>, <strong>absl_random_internal_randen_engine</strong>, <strong>absl_random_seed_sequences</strong>
+* Component <strong>absl_random_bit_gen_ref</strong>:
+  * CMake target name: <code>absl::random_bit_gen_ref</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_bit_gen_ref.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>, <strong>absl_random_internal_distribution_caller</strong>, <strong>absl_random_internal_fast_uniform_bits</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_random_internal_mock_helpers</strong>:
+  * CMake target name: <code>absl::random_internal_mock_helpers</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_mock_helpers.pc</strong>
+  * Requires other components: <strong>absl_fast_type_id</strong>, <strong>absl_optional</strong>
+* Component <strong>absl_random_distributions</strong>:
+  * CMake target name: <code>absl::random_distributions</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_distributions.pc</strong>
+  * Requires other components: <strong>absl_base_internal</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_random_internal_generate_real</strong>, <strong>absl_random_internal_distribution_caller</strong>, <strong>absl_random_internal_fast_uniform_bits</strong>, <strong>absl_random_internal_fastmath</strong>, <strong>absl_random_internal_iostream_state_saver</strong>, <strong>absl_random_internal_traits</strong>, <strong>absl_random_internal_uniform_helper</strong>, <strong>absl_random_internal_wide_multiply</strong>, <strong>absl_strings</strong>, <strong>absl_type_traits</strong>
+  * Links to libraries: <strong>absl_random_distributions</strong>
+* Component <strong>absl_random_seed_gen_exception</strong>:
+  * CMake target name: <code>absl::random_seed_gen_exception</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_seed_gen_exception.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+  * Links to libraries: <strong>absl_random_seed_gen_exception</strong>
+* Component <strong>absl_random_seed_sequences</strong>:
+  * CMake target name: <code>absl::random_seed_sequences</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_seed_sequences.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_inlined_vector</strong>, <strong>absl_random_internal_pool_urbg</strong>, <strong>absl_random_internal_salted_seed_seq</strong>, <strong>absl_random_internal_seed_material</strong>, <strong>absl_random_seed_gen_exception</strong>, <strong>absl_span</strong>
+  * Links to libraries: <strong>absl_random_seed_sequences</strong>
+* Component <strong>absl_random_internal_traits</strong>:
+  * CMake target name: <code>absl::random_internal_traits</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_traits.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_random_internal_distribution_caller</strong>:
+  * CMake target name: <code>absl::random_internal_distribution_caller</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_distribution_caller.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_utility</strong>, <strong>absl_fast_type_id</strong>
+* Component <strong>absl_random_internal_fast_uniform_bits</strong>:
+  * CMake target name: <code>absl::random_internal_fast_uniform_bits</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_fast_uniform_bits.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_random_internal_seed_material</strong>:
+  * CMake target name: <code>absl::random_internal_seed_material</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_seed_material.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>, <strong>absl_optional</strong>, <strong>absl_random_internal_fast_uniform_bits</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_span</strong>, <strong>absl_strings</strong>
+  * Links to libraries: <strong>absl_random_internal_seed_material</strong>
+* Component <strong>absl_random_internal_pool_urbg</strong>:
+  * CMake target name: <code>absl::random_internal_pool_urbg</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_pool_urbg.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_endian</strong>, <strong>absl_random_internal_randen</strong>, <strong>absl_random_internal_seed_material</strong>, <strong>absl_random_internal_traits</strong>, <strong>absl_random_seed_gen_exception</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_span</strong>
+  * Links to libraries: <strong>absl_random_internal_pool_urbg</strong>
+* Component <strong>absl_random_internal_salted_seed_seq</strong>:
+  * CMake target name: <code>absl::random_internal_salted_seed_seq</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_salted_seed_seq.pc</strong>
+  * Requires other components: <strong>absl_inlined_vector</strong>, <strong>absl_optional</strong>, <strong>absl_span</strong>, <strong>absl_random_internal_seed_material</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_random_internal_iostream_state_saver</strong>:
+  * CMake target name: <code>absl::random_internal_iostream_state_saver</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_iostream_state_saver.pc</strong>
+  * Requires other components: <strong>absl_int128</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_random_internal_generate_real</strong>:
+  * CMake target name: <code>absl::random_internal_generate_real</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_generate_real.pc</strong>
+  * Requires other components: <strong>absl_bits</strong>, <strong>absl_random_internal_fastmath</strong>, <strong>absl_random_internal_traits</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_random_internal_wide_multiply</strong>:
+  * CMake target name: <code>absl::random_internal_wide_multiply</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_wide_multiply.pc</strong>
+  * Requires other components: <strong>absl_bits</strong>, <strong>absl_config</strong>, <strong>absl_int128</strong>
+* Component <strong>absl_random_internal_fastmath</strong>:
+  * CMake target name: <code>absl::random_internal_fastmath</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_fastmath.pc</strong>
+  * Requires other components: <strong>absl_bits</strong>
+* Component <strong>absl_random_internal_nonsecure_base</strong>:
+  * CMake target name: <code>absl::random_internal_nonsecure_base</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_nonsecure_base.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>, <strong>absl_inlined_vector</strong>, <strong>absl_random_internal_pool_urbg</strong>, <strong>absl_random_internal_salted_seed_seq</strong>, <strong>absl_random_internal_seed_material</strong>, <strong>absl_span</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_random_internal_pcg_engine</strong>:
+  * CMake target name: <code>absl::random_internal_pcg_engine</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_pcg_engine.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_int128</strong>, <strong>absl_random_internal_fastmath</strong>, <strong>absl_random_internal_iostream_state_saver</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_random_internal_randen_engine</strong>:
+  * CMake target name: <code>absl::random_internal_randen_engine</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_randen_engine.pc</strong>
+  * Requires other components: <strong>absl_endian</strong>, <strong>absl_random_internal_iostream_state_saver</strong>, <strong>absl_random_internal_randen</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_random_internal_platform</strong>:
+  * CMake target name: <code>absl::random_internal_platform</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_platform.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+  * Links to libraries: <strong>absl_random_internal_platform</strong>
+* Component <strong>absl_random_internal_randen</strong>:
+  * CMake target name: <code>absl::random_internal_randen</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_randen.pc</strong>
+  * Requires other components: <strong>absl_random_internal_platform</strong>, <strong>absl_random_internal_randen_hwaes</strong>, <strong>absl_random_internal_randen_slow</strong>
+  * Links to libraries: <strong>absl_random_internal_randen</strong>
+* Component <strong>absl_random_internal_randen_slow</strong>:
+  * CMake target name: <code>absl::random_internal_randen_slow</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_randen_slow.pc</strong>
+  * Requires other components: <strong>absl_random_internal_platform</strong>, <strong>absl_config</strong>
+  * Links to libraries: <strong>absl_random_internal_randen_slow</strong>
+* Component <strong>absl_random_internal_randen_hwaes</strong>:
+  * CMake target name: <code>absl::random_internal_randen_hwaes</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_randen_hwaes.pc</strong>
+  * Requires other components: <strong>absl_random_internal_platform</strong>, <strong>absl_random_internal_randen_hwaes_impl</strong>, <strong>absl_config</strong>
+  * Links to libraries: <strong>absl_random_internal_randen_hwaes</strong>
+* Component <strong>absl_random_internal_randen_hwaes_impl</strong>:
+  * CMake target name: <code>absl::random_internal_randen_hwaes_impl</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_randen_hwaes_impl.pc</strong>
+  * Requires other components: <strong>absl_random_internal_platform</strong>, <strong>absl_config</strong>
+  * Links to libraries: <strong>absl_random_internal_randen_hwaes_impl</strong>
+* Component <strong>absl_random_internal_distribution_test_util</strong>:
+  * CMake target name: <code>absl::random_internal_distribution_test_util</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_distribution_test_util.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_strings</strong>, <strong>absl_str_format</strong>, <strong>absl_span</strong>
+  * Links to libraries: <strong>absl_random_internal_distribution_test_util</strong>
+* Component <strong>absl_random_internal_uniform_helper</strong>:
+  * CMake target name: <code>absl::random_internal_uniform_helper</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_random_internal_uniform_helper.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_random_internal_traits</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_status</strong>:
+  * CMake target name: <code>absl::status</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_status.pc</strong>
+  * Requires other components: <strong>absl_atomic_hook</strong>, <strong>absl_config</strong>, <strong>absl_cord</strong>, <strong>absl_core_headers</strong>, <strong>absl_function_ref</strong>, <strong>absl_inlined_vector</strong>, <strong>absl_optional</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_stacktrace</strong>, <strong>absl_str_format</strong>, <strong>absl_strerror</strong>, <strong>absl_strings</strong>, <strong>absl_symbolize</strong>
+  * Links to libraries: <strong>absl_status</strong>
+* Component <strong>absl_statusor</strong>:
+  * CMake target name: <code>absl::statusor</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_statusor.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_status</strong>, <strong>absl_core_headers</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_type_traits</strong>, <strong>absl_strings</strong>, <strong>absl_utility</strong>, <strong>absl_variant</strong>
+  * Links to libraries: <strong>absl_statusor</strong>
+* Component <strong>absl_strings</strong>:
+  * CMake target name: <code>absl::strings</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_strings.pc</strong>
+  * Requires other components: <strong>absl_strings_internal</strong>, <strong>absl_base</strong>, <strong>absl_bits</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_endian</strong>, <strong>absl_int128</strong>, <strong>absl_memory</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_throw_delegate</strong>, <strong>absl_type_traits</strong>
+  * Links to libraries: <strong>absl_strings</strong>
+  * Systems libs: <strong>m</strong>
+* Component <strong>absl_strings_internal</strong>:
+  * CMake target name: <code>absl::strings_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_strings_internal.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_endian</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_type_traits</strong>
+  * Links to libraries: <strong>absl_strings_internal</strong>
+* Component <strong>absl_str_format</strong>:
+  * CMake target name: <code>absl::str_format</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_str_format.pc</strong>
+  * Requires other components: <strong>absl_str_format_internal</strong>
+* Component <strong>absl_str_format_internal</strong>:
+  * CMake target name: <code>absl::str_format_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_str_format_internal.pc</strong>
+  * Requires other components: <strong>absl_bits</strong>, <strong>absl_strings</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_numeric_representation</strong>, <strong>absl_type_traits</strong>, <strong>absl_utility</strong>, <strong>absl_int128</strong>, <strong>absl_span</strong>
+  * Links to libraries: <strong>absl_str_format_internal</strong>
+* Component <strong>absl_cord_internal</strong>:
+  * CMake target name: <code>absl::cord_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cord_internal.pc</strong>
+  * Requires other components: <strong>absl_base_internal</strong>, <strong>absl_compressed_tuple</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_endian</strong>, <strong>absl_inlined_vector</strong>, <strong>absl_layout</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_strings</strong>, <strong>absl_throw_delegate</strong>, <strong>absl_type_traits</strong>
+  * Links to libraries: <strong>absl_cord_internal</strong>
+* Component <strong>absl_cordz_update_tracker</strong>:
+  * CMake target name: <code>absl::cordz_update_tracker</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cordz_update_tracker.pc</strong>
+  * Requires other components: <strong>absl_config</strong>
+* Component <strong>absl_cordz_functions</strong>:
+  * CMake target name: <code>absl::cordz_functions</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cordz_functions.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_exponential_biased</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_cordz_functions</strong>
+* Component <strong>absl_cordz_statistics</strong>:
+  * CMake target name: <code>absl::cordz_statistics</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cordz_statistics.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_cordz_update_tracker</strong>, <strong>absl_synchronization</strong>
+* Component <strong>absl_cordz_handle</strong>:
+  * CMake target name: <code>absl::cordz_handle</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cordz_handle.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_config</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_synchronization</strong>
+  * Links to libraries: <strong>absl_cordz_handle</strong>
+* Component <strong>absl_cordz_info</strong>:
+  * CMake target name: <code>absl::cordz_info</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cordz_info.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_config</strong>, <strong>absl_cord_internal</strong>, <strong>absl_cordz_functions</strong>, <strong>absl_cordz_handle</strong>, <strong>absl_cordz_statistics</strong>, <strong>absl_cordz_update_tracker</strong>, <strong>absl_core_headers</strong>, <strong>absl_inlined_vector</strong>, <strong>absl_span</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_stacktrace</strong>, <strong>absl_synchronization</strong>
+  * Links to libraries: <strong>absl_cordz_info</strong>
+* Component <strong>absl_cordz_sample_token</strong>:
+  * CMake target name: <code>absl::cordz_sample_token</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cordz_sample_token.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_cordz_handle</strong>, <strong>absl_cordz_info</strong>
+  * Links to libraries: <strong>absl_cordz_sample_token</strong>
+* Component <strong>absl_cordz_update_scope</strong>:
+  * CMake target name: <code>absl::cordz_update_scope</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cordz_update_scope.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_cord_internal</strong>, <strong>absl_cordz_info</strong>, <strong>absl_cordz_update_tracker</strong>, <strong>absl_core_headers</strong>
+* Component <strong>absl_cord</strong>:
+  * CMake target name: <code>absl::cord</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_cord.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_config</strong>, <strong>absl_cord_internal</strong>, <strong>absl_cordz_functions</strong>, <strong>absl_cordz_info</strong>, <strong>absl_cordz_update_scope</strong>, <strong>absl_cordz_update_tracker</strong>, <strong>absl_core_headers</strong>, <strong>absl_endian</strong>, <strong>absl_fixed_array</strong>, <strong>absl_function_ref</strong>, <strong>absl_inlined_vector</strong>, <strong>absl_optional</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_span</strong>, <strong>absl_strings</strong>, <strong>absl_type_traits</strong>
+  * Links to libraries: <strong>absl_cord</strong>
+* Component <strong>absl_graphcycles_internal</strong>:
+  * CMake target name: <code>absl::graphcycles_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_graphcycles_internal.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_base_internal</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_malloc_internal</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_graphcycles_internal</strong>
+* Component <strong>absl_kernel_timeout_internal</strong>:
+  * CMake target name: <code>absl::kernel_timeout_internal</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_kernel_timeout_internal.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_time</strong>
+* Component <strong>absl_synchronization</strong>:
+  * CMake target name: <code>absl::synchronization</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_synchronization.pc</strong>
+  * Requires other components: <strong>absl_graphcycles_internal</strong>, <strong>absl_kernel_timeout_internal</strong>, <strong>absl_atomic_hook</strong>, <strong>absl_base</strong>, <strong>absl_base_internal</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_dynamic_annotations</strong>, <strong>absl_malloc_internal</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_stacktrace</strong>, <strong>absl_symbolize</strong>, <strong>absl_time</strong>
+  * Links to libraries: <strong>absl_synchronization</strong>
+  * Systems libs: <strong>pthread</strong>
+* Component <strong>absl_time</strong>:
+  * CMake target name: <code>absl::time</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_time.pc</strong>
+  * Requires other components: <strong>absl_base</strong>, <strong>absl_civil_time</strong>, <strong>absl_core_headers</strong>, <strong>absl_int128</strong>, <strong>absl_raw_logging_internal</strong>, <strong>absl_strings</strong>, <strong>absl_time_zone</strong>
+  * Links to libraries: <strong>absl_time</strong>
+* Component <strong>absl_civil_time</strong>:
+  * CMake target name: <code>absl::civil_time</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_civil_time.pc</strong>
+  * Links to libraries: <strong>absl_civil_time</strong>
+* Component <strong>absl_time_zone</strong>:
+  * CMake target name: <code>absl::time_zone</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_time_zone.pc</strong>
+  * Links to libraries: <strong>absl_time_zone</strong>
+* Component <strong>absl_any</strong>:
+  * CMake target name: <code>absl::any</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_any.pc</strong>
+  * Requires other components: <strong>absl_bad_any_cast</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_fast_type_id</strong>, <strong>absl_type_traits</strong>, <strong>absl_utility</strong>
+* Component <strong>absl_bad_any_cast</strong>:
+  * CMake target name: <code>absl::bad_any_cast</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_bad_any_cast.pc</strong>
+  * Requires other components: <strong>absl_bad_any_cast_impl</strong>, <strong>absl_config</strong>
+* Component <strong>absl_bad_any_cast_impl</strong>:
+  * CMake target name: <code>absl::bad_any_cast_impl</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_bad_any_cast_impl.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_bad_any_cast_impl</strong>
+* Component <strong>absl_span</strong>:
+  * CMake target name: <code>absl::span</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_span.pc</strong>
+  * Requires other components: <strong>absl_algorithm</strong>, <strong>absl_core_headers</strong>, <strong>absl_throw_delegate</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_optional</strong>:
+  * CMake target name: <code>absl::optional</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_optional.pc</strong>
+  * Requires other components: <strong>absl_bad_optional_access</strong>, <strong>absl_base_internal</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_memory</strong>, <strong>absl_type_traits</strong>, <strong>absl_utility</strong>
+* Component <strong>absl_bad_optional_access</strong>:
+  * CMake target name: <code>absl::bad_optional_access</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_bad_optional_access.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_bad_optional_access</strong>
+* Component <strong>absl_bad_variant_access</strong>:
+  * CMake target name: <code>absl::bad_variant_access</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_bad_variant_access.pc</strong>
+  * Requires other components: <strong>absl_config</strong>, <strong>absl_raw_logging_internal</strong>
+  * Links to libraries: <strong>absl_bad_variant_access</strong>
+* Component <strong>absl_variant</strong>:
+  * CMake target name: <code>absl::variant</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_variant.pc</strong>
+  * Requires other components: <strong>absl_bad_variant_access</strong>, <strong>absl_base_internal</strong>, <strong>absl_config</strong>, <strong>absl_core_headers</strong>, <strong>absl_type_traits</strong>, <strong>absl_utility</strong>
+* Component <strong>absl_compare</strong>:
+  * CMake target name: <code>absl::compare</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_compare.pc</strong>
+  * Requires other components: <strong>absl_core_headers</strong>, <strong>absl_type_traits</strong>
+* Component <strong>absl_utility</strong>:
+  * CMake target name: <code>absl::utility</code>
+  * pkg-config <em>.pc</em> file: <strong>absl_utility.pc</strong>
+  * Requires other components: <strong>absl_base_internal</strong>, <strong>absl_config</strong>, <strong>absl_type_traits</strong></p>
+<p><br></p>
+<h2 id="exposed-header-files-for-abseil">Exposed header files for abseil<a class="headerlink" href="#exposed-header-files-for-abseil" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/cleanup/cleanup.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/cleanup/internal/cleanup.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/call_once.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/config.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/macros.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/const_init.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/port.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/options.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/optimization.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/dynamic_annotations.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/log_severity.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/casts.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/thread_annotations.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/policy_checks.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/attributes.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/spinlock_linux.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/spinlock_akaros.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/sysinfo.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/scoped_set_env.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/unscaledcycleclock.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/errno_saver.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/hide_ptr.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/strerror.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/pretty_function.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/identity.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/tsan_mutex_interface.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/endian.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/cycleclock.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/spinlock_win32.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/fast_type_id.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/direct_mmap.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/prefetch.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/spinlock_posix.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/raw_logging.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/atomic_hook.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/exception_safety_testing.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/per_thread_tls.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/spinlock_wait.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/atomic_hook_test_helper.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/low_level_scheduling.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/exception_testing.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/invoke.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/spinlock.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/dynamic_annotations.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/low_level_alloc.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/inline_variable_testing.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/thread_annotations.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/thread_identity.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/throw_delegate.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/scheduling_mode.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/unaligned_access.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/base/internal/inline_variable.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/flat_hash_map.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/inlined_vector.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/btree_map.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/flat_hash_set.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/btree_set.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/node_hash_set.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/fixed_array.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/btree_test.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/node_hash_map.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/container_memory.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/inlined_vector.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/hash_generator_testing.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/btree.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/unordered_map_lookup_test.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/hashtable_debug.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/unordered_set_constructor_test.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/tracked.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/unordered_set_modifiers_test.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/compressed_tuple.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/hash_function_defaults.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/hash_policy_testing.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/common.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/unordered_set_lookup_test.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/test_instance_tracker.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/raw_hash_set.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/hashtablez_sampler.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/hash_policy_traits.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/unordered_map_members_test.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/unordered_map_constructor_test.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/unordered_map_modifiers_test.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/layout.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/counting_allocator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/hashtable_debug_hooks.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/raw_hash_map.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/btree_container.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/unordered_set_members_test.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/container/internal/node_slot_policy.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/substitute.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/escaping.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/str_cat.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/str_join.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/str_format.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/numbers.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/cord.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/cord_test_helpers.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/str_split.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/string_view.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/ascii.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/cordz_test_helpers.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/str_replace.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/cord_analysis.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/match.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/charconv.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/strip.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/cord_buffer.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/escaping.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_rep_crc.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/pow10_helper.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cordz_update_scope.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_rep_btree.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/numbers_test_common.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/memutil.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_rep_ring_reader.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_internal.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_rep_flat.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cordz_handle.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_rep_consume.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/resize_uninitialized.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cordz_update_tracker.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/char_map.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_data_edge.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/charconv_parse.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_rep_btree_reader.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/ostringstream.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/str_split_internal.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_rep_test_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/str_join_internal.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cordz_functions.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cordz_sample_token.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/charconv_bigint.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/escaping_test_common.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/string_constant.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cordz_statistics.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cordz_info.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_rep_ring.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/utf8.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/stl_type_traits.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/cord_rep_btree_navigator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/str_format/arg.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/str_format/extension.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/str_format/checker.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/str_format/output.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/str_format/bind.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/str_format/parser.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/strings/internal/str_format/float_conversion.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/config.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/flag.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/declare.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/parse.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/usage_config.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/usage.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/commandlineflag.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/reflection.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/marshalling.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/internal/sequence_lock.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/internal/flag.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/internal/program_name.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/internal/private_handle_accessor.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/internal/parse.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/internal/usage.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/internal/commandlineflag.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/internal/registry.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/internal/flag_msvc.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/flags/internal/path_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/stacktrace.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/symbolize.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/leak_check.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/failure_signal_handler.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/symbolize_win32.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/symbolize_emscripten.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/symbolize_darwin.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/symbolize_elf.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/symbolize_unimplemented.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stacktrace_powerpc-inl.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/symbolize.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/address_is_readable.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stacktrace_x86-inl.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/vdso_support.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stacktrace_win32-inl.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stack_consumption.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stacktrace_riscv-inl.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/examine_stack.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stacktrace_aarch64-inl.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stacktrace_config.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/demangle.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/elf_mem_image.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stacktrace_emscripten-inl.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stacktrace_arm-inl.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stacktrace_unimplemented-inl.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/debugging/internal/stacktrace_generic-inl.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/civil_time.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/time.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/clock.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/get_current_time_chrono.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/get_current_time_posix.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/test_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/zoneinfo.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/src/time_zone_if.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/src/time_zone_info.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/src/time_zone_impl.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/src/time_zone_fixed.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/src/time_zone_libc.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/src/tzfile.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/src/time_zone_posix.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/include/cctz/civil_time.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/include/cctz/zone_info_source.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/include/cctz/civil_time_detail.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/time/internal/cctz/include/cctz/time_zone.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/meta/type_traits.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/functional/any_invocable.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/functional/function_ref.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/functional/bind_front.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/functional/internal/front_binder.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/functional/internal/any_invocable.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/functional/internal/function_ref.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/status/status_payload_printer.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/status/statusor.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/status/status.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/status/internal/statusor_internal.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/status/internal/status_internal.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/bit_gen_ref.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/exponential_distribution.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/distributions.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/bernoulli_distribution.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/log_uniform_int_distribution.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/random.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/gaussian_distribution.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/seed_gen_exception.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/beta_distribution.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/poisson_distribution.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/zipf_distribution.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/uniform_int_distribution.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/mocking_bit_gen.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/seed_sequences.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/uniform_real_distribution.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/discrete_distribution.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/mock_distributions.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/fastmath.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/fast_uniform_bits.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/salted_seed_seq.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/chi_square.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/randen_traits.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/pool_urbg.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/distribution_caller.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/mock_helpers.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/traits.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/seed_material.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/uniform_helper.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/sequence_urbg.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/generate_real.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/nonsecure_base.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/platform.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/pcg_engine.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/mock_overload_set.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/explicit_seed_seq.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/iostream_state_saver.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/randen_hwaes.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/wide_multiply.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/randen_detect.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/randen_slow.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/randen_engine.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/randen.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/distribution_test_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/random/internal/nanobenchmark.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/variant.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/bad_variant_access.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/bad_optional_access.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/span.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/bad_any_cast.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/optional.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/compare.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/any.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/internal/variant.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/internal/conformance_archetype.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/internal/parentheses.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/internal/conformance_testing_helpers.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/internal/conformance_aliases.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/internal/span.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/internal/transform_args.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/internal/optional.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/internal/conformance_testing.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/types/internal/conformance_profile.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/blocking_counter.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/mutex.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/barrier.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/notification.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/internal/graphcycles.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/internal/futex.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/internal/waiter.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/internal/create_thread_identity.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/internal/kernel_timeout.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/internal/per_thread_sem.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/synchronization/internal/thread_pool.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/utility/utility.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/memory/memory.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/numeric/int128_have_intrinsic.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/numeric/bits.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/numeric/int128_no_intrinsic.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/numeric/int128.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/numeric/internal/representation.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/numeric/internal/bits.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/profiling/internal/periodic_sampler.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/profiling/internal/exponential_biased.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/profiling/internal/sample_recorder.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/algorithm/algorithm.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/algorithm/container.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/hash/hash.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/hash/hash_testing.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/hash/internal/hash.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/hash/internal/low_level_hash.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/hash/internal/city.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;absl/hash/internal/spy_hash_state.h&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="-">---<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<p>Conan <strong>1.58.0</strong>. JFrog LTD. <a href="https://conan.io">https://conan.io</a>. Autogenerated 2023-02-05 20:12:53.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6df46069.min.js"></script>
+      
+    
+  </body>
+</html>
