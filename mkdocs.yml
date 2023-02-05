@@ -82,7 +82,19 @@ nav:
   - Home:
       - Information: index.md
       - Release-Table: list.md
+              
   - Version:
+      - v1.50.1:
+          - gRPC: packages/v1_50_1/grpc.md
+          - Dependency-Table: packages/v1_50_1/table.html
+          - Dependencies-Packages:
+              - abseil: packages/v1_50_1/abseil.md
+              - c-ares: packages/v1_50_1/c-ares.md
+              - googleapis: packages/v1_50_1/googleapis.md
+              - grpc-proto: packages/v1_50_1/grpc-proto.md
+              - openssl: packages/v1_50_1/openssl.md
+              - protobuf: packages/v1_50_1/protobuf.md
+              - re2: packages/v1_50_1/re2.md
       - v1.47.1:
           - gRPC: packages/v1_47_1/grpc.md
           - Dependency-Table: packages/v1_47_1/table.html

@@ -18,7 +18,6 @@ One of the compilers:
 - GCC compiler
 - A target generator e.g. CMake
 - Build essentials, make
-- Visual Studio 2019 - `MSVC 142`
 
 ## List of available [version](list.md) for further details
 
