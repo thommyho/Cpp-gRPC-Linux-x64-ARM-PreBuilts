@@ -1,0 +1,2067 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Instruction and documentation to set up gRPC using CONAN Packages">
+      
+      
+        <meta name="author" content="Thomas Hochstrasser">
+      
+      
+        <link rel="canonical" href="https://github.com/thommyho/Cpp-gRPC-Linux-x64-ARM-PreBuilts/1.50.1/packages/v1_50_1/protobuf/">
+      
+      
+        <link rel="prev" href="../openssl/">
+      
+      
+        <link rel="next" href="../re2/">
+      
+      <link rel="icon" href="../../../_assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
+    
+    
+      
+        <title>protobuf - Using Pre-Built packages of gRPC using CONAN</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=arial,+sans-serif:300,300i,400,400i,700,700i%7Cmonospace:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"arial, sans-serif";--md-code-font:"monospace"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../_assets/user.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#protobuf3214" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../../..">
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Using Pre-Built packages of gRPC using CONAN" class="md-header__button md-logo" aria-label="Using Pre-Built packages of gRPC using CONAN" data-md-component="logo">
+      
+  <img src="../../../_assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Using Pre-Built packages of gRPC using CONAN
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              protobuf
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/thommyho/Cpp-gRPC-Linux-x64-ARM-PreBuilts" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    thommyho/Cpp-gRPC-Linux-x64-ARM-PreBuilts
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Using Pre-Built packages of gRPC using CONAN" class="md-nav__button md-logo" aria-label="Using Pre-Built packages of gRPC using CONAN" data-md-component="logo">
+      
+  <img src="../../../_assets/logo.svg" alt="logo">
+
+    </a>
+    Using Pre-Built packages of gRPC using CONAN
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/thommyho/Cpp-gRPC-Linux-x64-ARM-PreBuilts" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    thommyho/Cpp-gRPC-Linux-x64-ARM-PreBuilts
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Home
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Information
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../list/" class="md-nav__link">
+        Release-Table
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Version
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Version
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          v1.50.1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          v1.50.1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grpc/" class="md-nav__link">
+        gRPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../table.html" class="md-nav__link">
+        Dependency-Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1_3" id="__nav_2_1_3_label" tabindex="0">
+          Dependencies-Packages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dependencies-Packages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abseil/" class="md-nav__link">
+        abseil
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c-ares/" class="md-nav__link">
+        c-ares
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../googleapis/" class="md-nav__link">
+        googleapis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grpc-proto/" class="md-nav__link">
+        grpc-proto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openssl/" class="md-nav__link">
+        openssl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          protobuf
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        protobuf
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#protobuf3214-dependencies" class="md-nav__link">
+    protobuf/3.21.4 dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-protobuf-conan-package" class="md-nav__link">
+    Using the protobuf Conan Package
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-protobuf-with-cmake" class="md-nav__link">
+    Using protobuf with CMake
+  </a>
+  
+    <nav class="md-nav" aria-label="Using protobuf with CMake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conan-cmake-generators" class="md-nav__link">
+    Conan CMake generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declared-cmake-build-modules" class="md-nav__link">
+    Declared CMake build modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Declared CMake build modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#libcmakeprotobufprotobuf-generatecmake" class="md-nav__link">
+    lib/cmake/protobuf/protobuf-generate.cmake
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-protobuf-with-visual-studio" class="md-nav__link">
+    Using protobuf with Visual Studio
+  </a>
+  
+    <nav class="md-nav" aria-label="Using protobuf with Visual Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-conan-generators" class="md-nav__link">
+    Visual Studio Conan generators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-protobuf-with-autotools-and-pkg-config" class="md-nav__link">
+    Using protobuf with Autotools and pkg-config
+  </a>
+  
+    <nav class="md-nav" aria-label="Using protobuf with Autotools and pkg-config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autotools-conan-generators" class="md-nav__link">
+    Autotools Conan generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pkg-config-conan-generator" class="md-nav__link">
+    pkg-config Conan generator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-build-systems" class="md-nav__link">
+    Other build systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declared-components-for-protobuf" class="md-nav__link">
+    Declared components for protobuf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exposed-header-files-for-protobuf" class="md-nav__link">
+    Exposed header files for protobuf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    ---
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../re2/" class="md-nav__link">
+        re2
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          v1.47.1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          v1.47.1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/grpc/" class="md-nav__link">
+        gRPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/table.html" class="md-nav__link">
+        Dependency-Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+          Dependencies-Packages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dependencies-Packages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/abseil/" class="md-nav__link">
+        abseil
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/c-ares/" class="md-nav__link">
+        c-ares
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/googleapis/" class="md-nav__link">
+        googleapis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/grpc-proto/" class="md-nav__link">
+        grpc-proto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/openssl/" class="md-nav__link">
+        openssl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/protobuf/" class="md-nav__link">
+        protobuf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/re2/" class="md-nav__link">
+        re2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_47_1/zlib/" class="md-nav__link">
+        zlib
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          v1.46.3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          v1.46.3
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_46_3/grpc/" class="md-nav__link">
+        gRPC
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_46_3/table.html" class="md-nav__link">
+        Dependency-Table
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+          Dependencies-Packages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Dependencies-Packages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_46_3/abseil/" class="md-nav__link">
+        abseil
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_46_3/c-ares/" class="md-nav__link">
+        c-ares
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_46_3/googleapis/" class="md-nav__link">
+        googleapis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_46_3/grpc-proto/" class="md-nav__link">
+        grpc-proto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_46_3/openssl/" class="md-nav__link">
+        openssl
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_46_3/protobuf/" class="md-nav__link">
+        protobuf
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_46_3/re2/" class="md-nav__link">
+        re2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../v1_46_3/zlib/" class="md-nav__link">
+        zlib
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#protobuf3214-dependencies" class="md-nav__link">
+    protobuf/3.21.4 dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-protobuf-conan-package" class="md-nav__link">
+    Using the protobuf Conan Package
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-protobuf-with-cmake" class="md-nav__link">
+    Using protobuf with CMake
+  </a>
+  
+    <nav class="md-nav" aria-label="Using protobuf with CMake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conan-cmake-generators" class="md-nav__link">
+    Conan CMake generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declared-cmake-build-modules" class="md-nav__link">
+    Declared CMake build modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Declared CMake build modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#libcmakeprotobufprotobuf-generatecmake" class="md-nav__link">
+    lib/cmake/protobuf/protobuf-generate.cmake
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-protobuf-with-visual-studio" class="md-nav__link">
+    Using protobuf with Visual Studio
+  </a>
+  
+    <nav class="md-nav" aria-label="Using protobuf with Visual Studio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-conan-generators" class="md-nav__link">
+    Visual Studio Conan generators
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-protobuf-with-autotools-and-pkg-config" class="md-nav__link">
+    Using protobuf with Autotools and pkg-config
+  </a>
+  
+    <nav class="md-nav" aria-label="Using protobuf with Autotools and pkg-config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autotools-conan-generators" class="md-nav__link">
+    Autotools Conan generators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pkg-config-conan-generator" class="md-nav__link">
+    pkg-config Conan generator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-build-systems" class="md-nav__link">
+    Other build systems
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declared-components-for-protobuf" class="md-nav__link">
+    Declared components for protobuf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exposed-header-files-for-protobuf" class="md-nav__link">
+    Exposed header files for protobuf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    ---
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="protobuf3214">protobuf/3.21.4<a class="headerlink" href="#protobuf3214" title="Permanent link">&para;</a></h1>
+<hr />
+<p><br></p>
+<h2 id="protobuf3214-dependencies">protobuf/3.21.4 dependencies<a class="headerlink" href="#protobuf3214-dependencies" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://conan.io/center/zlib">zlib/1.2.13</a></li>
+</ul>
+<p><br></p>
+<h2 id="using-the-protobuf-conan-package">Using the protobuf Conan Package<a class="headerlink" href="#using-the-protobuf-conan-package" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<p>Conan integrates with different build systems. You can declare which build system you want your project to use setting in the <strong>[generators]</strong> section of the <a href="https://docs.conan.io/en/latest/reference/conanfile_txt.html#generators">conanfile.txt</a> or using the <strong>generators</strong> attribute in the <a href="https://docs.conan.io/en/latest/reference/conanfile/attributes.html#generators">conanfile.py</a>. Here, there is some basic information you can use to integrate <strong>protobuf</strong> in your own project. For more detailed information, please <a href="https://docs.conan.io/en/latest/getting_started.html">check the Conan documentation</a>.</p>
+<p><br></p>
+<h2 id="using-protobuf-with-cmake">Using protobuf with CMake<a class="headerlink" href="#using-protobuf-with-cmake" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h3 id="conan-cmake-generators"><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/cmake.html">Conan CMake generators</a><a class="headerlink" href="#conan-cmake-generators" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<ul>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/cmake/cmakedeps.html">CMakeDeps</a>: generates information about where the <strong>protobuf</strong> library and its dependencies  ( <a href="https://conan.io/center/zlib">zlib</a>) are installed together with other information like version, flags, and directory data or configuration. CMake will use this files when you invoke <code>find_package()</code> in your <em>CMakeLists.txt</em>.</p>
+</li>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/cmake/cmaketoolchain.html">CMakeToolchain</a>: generates a CMake toolchain file that you can later invoke with CMake in the command line using <code>-DCMAKE_TOOLCHAIN_FILE=conantoolchain.cmake</code>.</p>
+</li>
+</ul>
+<p>Declare these generators in your <strong>conanfile.txt</strong> along with your <strong>protobuf</strong> dependency like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[requires]</span>
+<span class="na">protobuf/3.21.4</span>
+
+<span class="k">[generators]</span>
+<span class="na">CMakeDeps</span>
+<span class="na">CMakeToolchain</span>
+</code></pre></div>
+<p><br></p>
+<p>To use <strong>protobuf</strong> in a simple CMake project with this structure:</p>
+<div class="highlight"><pre><span></span><code>.
+<span class="p">|</span>--<span class="w"> </span>CMakeLists.txt
+<span class="p">|</span>--<span class="w"> </span>conanfile.txt
+<span class="sb">`</span>--<span class="w"> </span>src
+<span class="w">    </span><span class="sb">`</span>--<span class="w"> </span>main..cpp
+</code></pre></div>
+<p><br></p>
+<p>Your <strong>CMakeLists.txt</strong> could look similar to this, using the global <strong>protobuf::protobuf</strong> CMake's target:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.15</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">protobuf_project</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">protobuf</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">src/main.cpp</span><span class="p">)</span>
+
+<span class="c"># Use the global target</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">protobuf::protobuf</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<p>To install <strong>protobuf/3.21.4</strong>, its dependencies and build your project, you just have to do:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># for Linux/macOS</span>
+$<span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--install-folder<span class="w"> </span>cmake-build-release<span class="w"> </span>--build<span class="o">=</span>missing
+$<span class="w"> </span>cmake<span class="w"> </span>.<span class="w"> </span>-DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>cmake-build-release/conan_toolchain.cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+$<span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>.
+
+<span class="c1"># for Windows and Visual Studio 2017</span>
+$<span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--output-folder<span class="w"> </span>cmake-build<span class="w"> </span>--build<span class="o">=</span>missing
+$<span class="w"> </span>cmake<span class="w"> </span>.<span class="w"> </span>-G<span class="w"> </span><span class="s2">&quot;Visual Studio 15 2017&quot;</span><span class="w"> </span>-DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>cmake-build/conan_toolchain.cmake
+$<span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--config<span class="w"> </span>Release
+</code></pre></div>
+<p><br></p>
+<p>As the protobuf Conan package defines components, you can link only the desired parts of the library in your project. For example, linking only with the protobuf <strong>libprotobuf</strong> component, through the <strong>protobuf::libprotobuf</strong> target.</p>
+<div class="highlight"><pre><span></span><code><span class="err">...</span>
+<span class="c"># Link just to protobuf libprotobuf component</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">protobuf::libprotobuf</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<p>To check all the available components for <strong>protobuf</strong> Conan package, please check the dedicated section at the end of this document.</p>
+<p><br></p>
+<h3 id="declared-cmake-build-modules">Declared CMake build modules<a class="headerlink" href="#declared-cmake-build-modules" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h4 id="libcmakeprotobufprotobuf-generatecmake">lib/cmake/protobuf/protobuf-generate.cmake<a class="headerlink" href="#libcmakeprotobufprotobuf-generatecmake" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c"># User options</span>
+<span class="nb">include</span><span class="p">(</span><span class="s2">&quot;${CMAKE_CURRENT_LIST_DIR}/protobuf-options.cmake&quot;</span><span class="p">)</span>
+
+<span class="c"># Depend packages</span>
+<span class="c"># BEGIN CONAN PATCH</span>
+<span class="c">#_protobuf_FIND_ZLIB@</span>
+<span class="c"># END CONAN PATCH</span>
+
+<span class="c"># Imported targets</span>
+<span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">TARGET</span><span class="w"> </span><span class="s">protobuf::protoc</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="s">CMAKE_CROSSCOMPILING</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">find_program</span><span class="p">(</span><span class="s">PROTOC_PROGRAM</span><span class="w"> </span><span class="s">protoc</span><span class="w"> </span><span class="s">PATHS</span><span class="w"> </span><span class="s">ENV</span><span class="w"> </span><span class="s">PATH</span><span class="w"> </span><span class="s">NO_DEFAULT_PATH</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">PROTOC_PROGRAM</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">set</span><span class="p">(</span><span class="s">PROTOC_PROGRAM</span><span class="w"> </span><span class="s2">&quot;${CMAKE_CURRENT_LIST_DIR}/../../../bin/protoc&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">get_filename_component</span><span class="p">(</span><span class="s">PROTOC_PROGRAM</span><span class="w"> </span><span class="s2">&quot;${PROTOC_PROGRAM}&quot;</span><span class="w"> </span><span class="s">ABSOLUTE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">Protobuf_PROTOC_EXECUTABLE</span><span class="w"> </span><span class="o">${</span><span class="nv">PROTOC_PROGRAM</span><span class="o">}</span><span class="w"> </span><span class="s">CACHE</span><span class="w"> </span><span class="s">FILEPATH</span><span class="w"> </span><span class="s2">&quot;The protoc compiler&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">add_executable</span><span class="p">(</span><span class="s">protobuf::protoc</span><span class="w"> </span><span class="s">IMPORTED</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set_property</span><span class="p">(</span><span class="s">TARGET</span><span class="w"> </span><span class="s">protobuf::protoc</span><span class="w"> </span><span class="s">PROPERTY</span><span class="w"> </span><span class="s">IMPORTED_LOCATION</span><span class="w"> </span><span class="o">${</span><span class="nv">Protobuf_PROTOC_EXECUTABLE</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+
+
+<span class="nb">function</span><span class="p">(</span><span class="s">protobuf_generate</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">include</span><span class="p">(</span><span class="s">CMakeParseArguments</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s">_options</span><span class="w"> </span><span class="s">APPEND_PATH</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s">_singleargs</span><span class="w"> </span><span class="s">LANGUAGE</span><span class="w"> </span><span class="s">OUT_VAR</span><span class="w"> </span><span class="s">EXPORT_MACRO</span><span class="w"> </span><span class="s">PROTOC_OUT_DIR</span><span class="w"> </span><span class="s">PLUGIN</span><span class="w"> </span><span class="s">PLUGIN_OPTIONS</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">COMMAND</span><span class="w"> </span><span class="s">target_sources</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="s">_singleargs</span><span class="w"> </span><span class="s">TARGET</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s">_multiargs</span><span class="w"> </span><span class="s">PROTOS</span><span class="w"> </span><span class="s">IMPORT_DIRS</span><span class="w"> </span><span class="s">GENERATE_EXTENSIONS</span><span class="w"> </span><span class="s">PROTOC_OPTIONS</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nb">cmake_parse_arguments</span><span class="p">(</span><span class="s">protobuf_generate</span><span class="w"> </span><span class="s2">&quot;${_options}&quot;</span><span class="w"> </span><span class="s2">&quot;${_singleargs}&quot;</span><span class="w"> </span><span class="s2">&quot;${_multiargs}&quot;</span><span class="w"> </span><span class="s2">&quot;${ARGN}&quot;</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">protobuf_generate_PROTOS</span><span class="w"> </span><span class="s">AND</span><span class="w"> </span><span class="s">NOT</span><span class="w"> </span><span class="s">protobuf_generate_TARGET</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s">SEND_ERROR</span><span class="w"> </span><span class="s2">&quot;Error: protobuf_generate called without any targets or source files&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">return</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">protobuf_generate_OUT_VAR</span><span class="w"> </span><span class="s">AND</span><span class="w"> </span><span class="s">NOT</span><span class="w"> </span><span class="s">protobuf_generate_TARGET</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s">SEND_ERROR</span><span class="w"> </span><span class="s2">&quot;Error: protobuf_generate called without a target or output variable&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">return</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">protobuf_generate_LANGUAGE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">protobuf_generate_LANGUAGE</span><span class="w"> </span><span class="s">cpp</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">string</span><span class="p">(</span><span class="s">TOLOWER</span><span class="w"> </span><span class="o">${</span><span class="nv">protobuf_generate_LANGUAGE</span><span class="o">}</span><span class="w"> </span><span class="s">protobuf_generate_LANGUAGE</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">protobuf_generate_PROTOC_OUT_DIR</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">protobuf_generate_PROTOC_OUT_DIR</span><span class="w"> </span><span class="o">${</span><span class="nv">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">protobuf_generate_EXPORT_MACRO</span><span class="w"> </span><span class="s">AND</span><span class="w"> </span><span class="s">protobuf_generate_LANGUAGE</span><span class="w"> </span><span class="s">STREQUAL</span><span class="w"> </span><span class="s">cpp</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">_dll_export_decl</span><span class="w"> </span><span class="s2">&quot;dllexport_decl=${protobuf_generate_EXPORT_MACRO}&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">foreach</span><span class="p">(</span><span class="s">_option</span><span class="w"> </span><span class="o">${</span><span class="nv">_dll_export_decl</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">protobuf_generate_PLUGIN_OPTIONS</span><span class="o">}</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># append comma - not using CMake lists and string replacement as users</span>
+<span class="w">    </span><span class="c"># might have semicolons in options</span>
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="s">_plugin_options</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">set</span><span class="p">(</span><span class="w"> </span><span class="s">_plugin_options</span><span class="w"> </span><span class="s2">&quot;${_plugin_options},&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">_plugin_options</span><span class="w"> </span><span class="s2">&quot;${_plugin_options}${_option}&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endforeach</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">protobuf_generate_PLUGIN</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">set</span><span class="p">(</span><span class="s">_plugin</span><span class="w"> </span><span class="s2">&quot;--plugin=${protobuf_generate_PLUGIN}&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">protobuf_generate_GENERATE_EXTENSIONS</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="s">protobuf_generate_LANGUAGE</span><span class="w"> </span><span class="s">STREQUAL</span><span class="w"> </span><span class="s">cpp</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">set</span><span class="p">(</span><span class="s">protobuf_generate_GENERATE_EXTENSIONS</span><span class="w"> </span><span class="s">.pb.h</span><span class="w"> </span><span class="s">.pb.cc</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">elseif</span><span class="p">(</span><span class="s">protobuf_generate_LANGUAGE</span><span class="w"> </span><span class="s">STREQUAL</span><span class="w"> </span><span class="s">python</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">set</span><span class="p">(</span><span class="s">protobuf_generate_GENERATE_EXTENSIONS</span><span class="w"> </span><span class="s">_pb2.py</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">else</span><span class="p">()</span>
+<span class="w">      </span><span class="nb">message</span><span class="p">(</span><span class="s">SEND_ERROR</span><span class="w"> </span><span class="s2">&quot;Error: protobuf_generate given unknown Language ${LANGUAGE}, please provide a value for GENERATE_EXTENSIONS&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">return</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">protobuf_generate_TARGET</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_target_property</span><span class="p">(</span><span class="s">_source_list</span><span class="w"> </span><span class="o">${</span><span class="nv">protobuf_generate_TARGET</span><span class="o">}</span><span class="w"> </span><span class="s">SOURCES</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">foreach</span><span class="p">(</span><span class="s">_file</span><span class="w"> </span><span class="o">${</span><span class="nv">_source_list</span><span class="o">}</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">if</span><span class="p">(</span><span class="s">_file</span><span class="w"> </span><span class="s">MATCHES</span><span class="w"> </span><span class="s2">&quot;proto$&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="s">protobuf_generate_PROTOS</span><span class="w"> </span><span class="o">${</span><span class="nv">_file</span><span class="o">}</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">endforeach</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">protobuf_generate_PROTOS</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s">SEND_ERROR</span><span class="w"> </span><span class="s2">&quot;Error: protobuf_generate could not find any .proto files&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">return</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">protobuf_generate_APPEND_PATH</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Create an include path for each file specified</span>
+<span class="w">    </span><span class="nb">foreach</span><span class="p">(</span><span class="s">_file</span><span class="w"> </span><span class="o">${</span><span class="nv">protobuf_generate_PROTOS</span><span class="o">}</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">get_filename_component</span><span class="p">(</span><span class="s">_abs_file</span><span class="w"> </span><span class="o">${</span><span class="nv">_file</span><span class="o">}</span><span class="w"> </span><span class="s">ABSOLUTE</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">get_filename_component</span><span class="p">(</span><span class="s">_abs_dir</span><span class="w"> </span><span class="o">${</span><span class="nv">_abs_file</span><span class="o">}</span><span class="w"> </span><span class="s">DIRECTORY</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">list</span><span class="p">(</span><span class="s">FIND</span><span class="w"> </span><span class="s">_protobuf_include_path</span><span class="w"> </span><span class="o">${</span><span class="nv">_abs_dir</span><span class="o">}</span><span class="w"> </span><span class="s">_contains_already</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">if</span><span class="p">(</span><span class="o">${</span><span class="nv">_contains_already</span><span class="o">}</span><span class="w"> </span><span class="s">EQUAL</span><span class="w"> </span><span class="s">-1</span><span class="p">)</span>
+<span class="w">          </span><span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="s">_protobuf_include_path</span><span class="w"> </span><span class="s">-I</span><span class="w"> </span><span class="o">${</span><span class="nv">_abs_dir</span><span class="o">}</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">endforeach</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">foreach</span><span class="p">(</span><span class="s">DIR</span><span class="w"> </span><span class="o">${</span><span class="nv">protobuf_generate_IMPORT_DIRS</span><span class="o">}</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_filename_component</span><span class="p">(</span><span class="s">ABS_PATH</span><span class="w"> </span><span class="o">${</span><span class="nv">DIR</span><span class="o">}</span><span class="w"> </span><span class="s">ABSOLUTE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">list</span><span class="p">(</span><span class="s">FIND</span><span class="w"> </span><span class="s">_protobuf_include_path</span><span class="w"> </span><span class="o">${</span><span class="nv">ABS_PATH</span><span class="o">}</span><span class="w"> </span><span class="s">_contains_already</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="o">${</span><span class="nv">_contains_already</span><span class="o">}</span><span class="w"> </span><span class="s">EQUAL</span><span class="w"> </span><span class="s">-1</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="s">_protobuf_include_path</span><span class="w"> </span><span class="s">-I</span><span class="w"> </span><span class="o">${</span><span class="nv">ABS_PATH</span><span class="o">}</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">endforeach</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">_protobuf_include_path</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">_protobuf_include_path</span><span class="w"> </span><span class="s">-I</span><span class="w"> </span><span class="o">${</span><span class="nv">CMAKE_CURRENT_SOURCE_DIR</span><span class="o">}</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s">_generated_srcs_all</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">foreach</span><span class="p">(</span><span class="s">_proto</span><span class="w"> </span><span class="o">${</span><span class="nv">protobuf_generate_PROTOS</span><span class="o">}</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_filename_component</span><span class="p">(</span><span class="s">_abs_file</span><span class="w"> </span><span class="o">${</span><span class="nv">_proto</span><span class="o">}</span><span class="w"> </span><span class="s">ABSOLUTE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_filename_component</span><span class="p">(</span><span class="s">_abs_dir</span><span class="w"> </span><span class="o">${</span><span class="nv">_abs_file</span><span class="o">}</span><span class="w"> </span><span class="s">DIRECTORY</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">get_filename_component</span><span class="p">(</span><span class="s">_file_full_name</span><span class="w"> </span><span class="o">${</span><span class="nv">_proto</span><span class="o">}</span><span class="w"> </span><span class="s">NAME</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">string</span><span class="p">(</span><span class="s">FIND</span><span class="w"> </span><span class="s2">&quot;${_file_full_name}&quot;</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="w"> </span><span class="s">_file_last_ext_pos</span><span class="w"> </span><span class="s">REVERSE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">string</span><span class="p">(</span><span class="s">SUBSTRING</span><span class="w"> </span><span class="s2">&quot;${_file_full_name}&quot;</span><span class="w"> </span><span class="s">0</span><span class="w"> </span><span class="o">${</span><span class="nv">_file_last_ext_pos</span><span class="o">}</span><span class="w"> </span><span class="s">_basename</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">_suitable_include_found</span><span class="w"> </span><span class="s">FALSE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">foreach</span><span class="p">(</span><span class="s">DIR</span><span class="w"> </span><span class="o">${</span><span class="nv">_protobuf_include_path</span><span class="o">}</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">DIR</span><span class="w"> </span><span class="s">STREQUAL</span><span class="w"> </span><span class="s2">&quot;-I&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">file</span><span class="p">(</span><span class="s">RELATIVE_PATH</span><span class="w"> </span><span class="s">_rel_dir</span><span class="w"> </span><span class="o">${</span><span class="nv">DIR</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">_abs_dir</span><span class="o">}</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">string</span><span class="p">(</span><span class="s">FIND</span><span class="w"> </span><span class="s2">&quot;${_rel_dir}&quot;</span><span class="w"> </span><span class="s2">&quot;../&quot;</span><span class="w"> </span><span class="s">_is_in_parent_folder</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">if</span><span class="w"> </span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="o">${</span><span class="nv">_is_in_parent_folder</span><span class="o">}</span><span class="w"> </span><span class="s">EQUAL</span><span class="w"> </span><span class="s">0</span><span class="p">)</span>
+<span class="w">          </span><span class="nb">set</span><span class="p">(</span><span class="s">_suitable_include_found</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span>
+<span class="w">          </span><span class="nb">break</span><span class="p">()</span>
+<span class="w">        </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">      </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">endforeach</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">_suitable_include_found</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">message</span><span class="p">(</span><span class="s">SEND_ERROR</span><span class="w"> </span><span class="s2">&quot;Error: protobuf_generate could not find any correct proto include directory.&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">return</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">_generated_srcs</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">foreach</span><span class="p">(</span><span class="s">_ext</span><span class="w"> </span><span class="o">${</span><span class="nv">protobuf_generate_GENERATE_EXTENSIONS</span><span class="o">}</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="s">_generated_srcs</span><span class="w"> </span><span class="s2">&quot;${protobuf_generate_PROTOC_OUT_DIR}/${_rel_dir}/${_basename}${_ext}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endforeach</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="s">_generated_srcs_all</span><span class="w"> </span><span class="o">${</span><span class="nv">_generated_srcs</span><span class="o">}</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">_comment</span><span class="w"> </span><span class="s2">&quot;Running ${protobuf_generate_LANGUAGE} protocol buffer compiler on ${_proto}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="s">protobuf_generate_PROTOC_OPTIONS</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">set</span><span class="p">(</span><span class="s">_comment</span><span class="w"> </span><span class="s2">&quot;${_comment}, protoc-options: ${protobuf_generate_PROTOC_OPTIONS}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="s">_plugin_options</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">set</span><span class="p">(</span><span class="s">_comment</span><span class="w"> </span><span class="s2">&quot;${_comment}, plugin-options: ${_plugin_options}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nb">add_custom_command</span><span class="p">(</span>
+<span class="w">      </span><span class="s">OUTPUT</span><span class="w"> </span><span class="o">${</span><span class="nv">_generated_srcs</span><span class="o">}</span>
+<span class="w">      </span><span class="s">COMMAND</span><span class="w"> </span><span class="s">protobuf::protoc</span>
+<span class="w">      </span><span class="s">ARGS</span><span class="w"> </span><span class="o">${</span><span class="nv">protobuf_generate_PROTOC_OPTIONS</span><span class="o">}</span><span class="w"> </span><span class="s">--</span><span class="o">${</span><span class="nv">protobuf_generate_LANGUAGE</span><span class="o">}</span><span class="s">_out</span><span class="w"> </span><span class="o">${</span><span class="nv">_plugin_options</span><span class="o">}</span><span class="s">:</span><span class="o">${</span><span class="nv">protobuf_generate_PROTOC_OUT_DIR</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">_plugin</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">_protobuf_include_path</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">_abs_file</span><span class="o">}</span>
+<span class="w">      </span><span class="s">DEPENDS</span><span class="w"> </span><span class="o">${</span><span class="nv">_abs_file</span><span class="o">}</span><span class="w"> </span><span class="s">protobuf::protoc</span>
+<span class="w">      </span><span class="s">COMMENT</span><span class="w"> </span><span class="o">${</span><span class="nv">_comment</span><span class="o">}</span>
+<span class="w">      </span><span class="s">VERBATIM</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endforeach</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">set_source_files_properties</span><span class="p">(</span><span class="o">${</span><span class="nv">_generated_srcs_all</span><span class="o">}</span><span class="w"> </span><span class="s">PROPERTIES</span><span class="w"> </span><span class="s">GENERATED</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">protobuf_generate_OUT_VAR</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">protobuf_generate_OUT_VAR</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">_generated_srcs_all</span><span class="o">}</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">protobuf_generate_TARGET</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">target_sources</span><span class="p">(</span><span class="o">${</span><span class="nv">protobuf_generate_TARGET</span><span class="o">}</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="o">${</span><span class="nv">_generated_srcs_all</span><span class="o">}</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># CMake FindProtobuf module compatible file</span>
+<span class="nb">if</span><span class="p">(</span><span class="s">protobuf_MODULE_COMPATIBLE</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">include</span><span class="p">(</span><span class="s2">&quot;${CMAKE_CURRENT_LIST_DIR}/protobuf-module.cmake&quot;</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+
+<span class="err">```</span><span class="c">#### lib/cmake/protobuf/protobuf-module.cmake</span>
+<span class="err">```cmake</span>
+<span class="c"># This file contains backwards compatibility patches for various legacy functions and variables</span>
+<span class="c"># Functions</span>
+
+<span class="nb">function</span><span class="p">(</span><span class="s">PROTOBUF_GENERATE_CPP</span><span class="w"> </span><span class="s">SRCS</span><span class="w"> </span><span class="s">HDRS</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">cmake_parse_arguments</span><span class="p">(</span><span class="s">protobuf_generate_cpp</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s2">&quot;EXPORT_MACRO&quot;</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="o">${</span><span class="nv">ARGN</span><span class="o">}</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s">_proto_files</span><span class="w"> </span><span class="s2">&quot;${protobuf_generate_cpp_UNPARSED_ARGUMENTS}&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">_proto_files</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s">SEND_ERROR</span><span class="w"> </span><span class="s2">&quot;Error: PROTOBUF_GENERATE_CPP() called without any proto files&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">return</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">PROTOBUF_GENERATE_CPP_APPEND_PATH</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">_append_arg</span><span class="w"> </span><span class="s">APPEND_PATH</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">DEFINED</span><span class="w"> </span><span class="s">Protobuf_IMPORT_DIRS</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">_import_arg</span><span class="w"> </span><span class="s">IMPORT_DIRS</span><span class="w"> </span><span class="o">${</span><span class="nv">Protobuf_IMPORT_DIRS</span><span class="o">}</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s">_outvar</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">protobuf_generate</span><span class="p">(</span><span class="o">${</span><span class="nv">_append_arg</span><span class="o">}</span><span class="w"> </span><span class="s">LANGUAGE</span><span class="w"> </span><span class="s">cpp</span><span class="w"> </span><span class="s">EXPORT_MACRO</span><span class="w"> </span><span class="o">${</span><span class="nv">protobuf_generate_cpp_EXPORT_MACRO</span><span class="o">}</span><span class="w"> </span><span class="s">OUT_VAR</span><span class="w"> </span><span class="s">_outvar</span><span class="w"> </span><span class="o">${</span><span class="nv">_import_arg</span><span class="o">}</span><span class="w"> </span><span class="s">PROTOS</span><span class="w"> </span><span class="o">${</span><span class="nv">_proto_files</span><span class="o">}</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">SRCS</span><span class="o">}</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">HDRS</span><span class="o">}</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">foreach</span><span class="p">(</span><span class="s">_file</span><span class="w"> </span><span class="o">${</span><span class="nv">_outvar</span><span class="o">}</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">if</span><span class="p">(</span><span class="s">_file</span><span class="w"> </span><span class="s">MATCHES</span><span class="w"> </span><span class="s2">&quot;cc$&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="o">${</span><span class="nv">SRCS</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">_file</span><span class="o">}</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">else</span><span class="p">()</span>
+<span class="w">      </span><span class="nb">list</span><span class="p">(</span><span class="s">APPEND</span><span class="w"> </span><span class="o">${</span><span class="nv">HDRS</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">_file</span><span class="o">}</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">endforeach</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">SRCS</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">${SRCS</span><span class="o">}</span><span class="s">}</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">HDRS</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">${HDRS</span><span class="o">}</span><span class="s">}</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="nb">function</span><span class="p">(</span><span class="s">PROTOBUF_GENERATE_PYTHON</span><span class="w"> </span><span class="s">SRCS</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">ARGN</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">message</span><span class="p">(</span><span class="s">SEND_ERROR</span><span class="w"> </span><span class="s2">&quot;Error: PROTOBUF_GENERATE_PYTHON() called without any proto files&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">return</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">PROTOBUF_GENERATE_CPP_APPEND_PATH</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">_append_arg</span><span class="w"> </span><span class="s">APPEND_PATH</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">DEFINED</span><span class="w"> </span><span class="s">Protobuf_IMPORT_DIRS</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="s">_import_arg</span><span class="w"> </span><span class="s">IMPORT_DIRS</span><span class="w"> </span><span class="o">${</span><span class="nv">Protobuf_IMPORT_DIRS</span><span class="o">}</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s">_outvar</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">protobuf_generate</span><span class="p">(</span><span class="o">${</span><span class="nv">_append_arg</span><span class="o">}</span><span class="w"> </span><span class="s">LANGUAGE</span><span class="w"> </span><span class="s">python</span><span class="w"> </span><span class="s">OUT_VAR</span><span class="w"> </span><span class="s">_outvar</span><span class="w"> </span><span class="o">${</span><span class="nv">_import_arg</span><span class="o">}</span><span class="w"> </span><span class="s">PROTOS</span><span class="w"> </span><span class="o">${</span><span class="nv">ARGN</span><span class="o">}</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">SRCS</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">_outvar</span><span class="o">}</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c"># Environment</span>
+
+<span class="c"># Backwards compatibility</span>
+<span class="c"># Define camel case versions of input variables</span>
+<span class="nb">foreach</span><span class="p">(</span><span class="s">UPPER</span>
+<span class="w">    </span><span class="s">PROTOBUF_SRC_ROOT_FOLDER</span>
+<span class="w">    </span><span class="s">PROTOBUF_IMPORT_DIRS</span>
+<span class="w">    </span><span class="s">PROTOBUF_DEBUG</span>
+<span class="w">    </span><span class="s">PROTOBUF_LIBRARY</span>
+<span class="w">    </span><span class="s">PROTOBUF_PROTOC_LIBRARY</span>
+<span class="w">    </span><span class="s">PROTOBUF_INCLUDE_DIR</span>
+<span class="w">    </span><span class="s">PROTOBUF_PROTOC_EXECUTABLE</span>
+<span class="w">    </span><span class="s">PROTOBUF_LIBRARY_DEBUG</span>
+<span class="w">    </span><span class="s">PROTOBUF_PROTOC_LIBRARY_DEBUG</span>
+<span class="w">    </span><span class="s">PROTOBUF_LITE_LIBRARY</span>
+<span class="w">    </span><span class="s">PROTOBUF_LITE_LIBRARY_DEBUG</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="nb">if</span><span class="w"> </span><span class="p">(</span><span class="s">DEFINED</span><span class="w"> </span><span class="o">${</span><span class="nv">UPPER</span><span class="o">}</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">string</span><span class="p">(</span><span class="s">REPLACE</span><span class="w"> </span><span class="s2">&quot;PROTOBUF_&quot;</span><span class="w"> </span><span class="s2">&quot;Protobuf_&quot;</span><span class="w"> </span><span class="s">Camel</span><span class="w"> </span><span class="o">${</span><span class="nv">UPPER</span><span class="o">}</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">if</span><span class="w"> </span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">DEFINED</span><span class="w"> </span><span class="o">${</span><span class="nv">Camel</span><span class="o">}</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">Camel</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">${UPPER</span><span class="o">}</span><span class="s">}</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">endif</span><span class="p">()</span>
+<span class="nb">endforeach</span><span class="p">()</span>
+
+<span class="nb">if</span><span class="p">(</span><span class="s">0</span><span class="p">)</span>
+<span class="nb">if</span><span class="p">(</span><span class="s">DEFINED</span><span class="w"> </span><span class="s">Protobuf_SRC_ROOT_FOLDER</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">message</span><span class="p">(</span><span class="s">AUTHOR_WARNING</span><span class="w"> </span><span class="s2">&quot;Variable Protobuf_SRC_ROOT_FOLDER defined, but not&quot;</span>
+<span class="w">    </span><span class="s2">&quot; used in CONFIG mode&quot;</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+
+<span class="nb">include</span><span class="p">(</span><span class="s">SelectLibraryConfigurations</span><span class="p">)</span>
+
+<span class="c"># Internal function: search for normal library as well as a debug one</span>
+<span class="c">#    if the debug one is specified also include debug/optimized keywords</span>
+<span class="c">#    in *_LIBRARIES variable</span>
+<span class="nb">function</span><span class="p">(</span><span class="s">_protobuf_find_libraries</span><span class="w"> </span><span class="s">name</span><span class="w"> </span><span class="s">filename</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="o">${</span><span class="nv">name</span><span class="o">}</span><span class="s">_LIBRARIES</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Use result recorded by a previous call.</span>
+<span class="w">  </span><span class="nb">elseif</span><span class="p">(</span><span class="o">${</span><span class="nv">name</span><span class="o">}</span><span class="s">_LIBRARY</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># Honor cache entry used by CMake 3.5 and lower.</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">name</span><span class="o">}</span><span class="s">_LIBRARIES</span><span class="w"> </span><span class="s2">&quot;${${name}_LIBRARY}&quot;</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">elseif</span><span class="p">(</span><span class="s">TARGET</span><span class="w"> </span><span class="s">protobuf::lib</span><span class="o">${</span><span class="nv">filename</span><span class="o">}</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_target_property</span><span class="p">(</span><span class="o">${</span><span class="nv">name</span><span class="o">}</span><span class="s">_LIBRARY_RELEASE</span><span class="w"> </span><span class="s">protobuf::lib</span><span class="o">${</span><span class="nv">filename</span><span class="o">}</span>
+<span class="w">      </span><span class="s">LOCATION_RELEASE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_target_property</span><span class="p">(</span><span class="o">${</span><span class="nv">name</span><span class="o">}</span><span class="s">_LIBRARY_RELWITHDEBINFO</span><span class="w"> </span><span class="s">protobuf::lib</span><span class="o">${</span><span class="nv">filename</span><span class="o">}</span>
+<span class="w">      </span><span class="s">LOCATION_RELWITHDEBINFO</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_target_property</span><span class="p">(</span><span class="o">${</span><span class="nv">name</span><span class="o">}</span><span class="s">_LIBRARY_MINSIZEREL</span><span class="w"> </span><span class="s">protobuf::lib</span><span class="o">${</span><span class="nv">filename</span><span class="o">}</span>
+<span class="w">      </span><span class="s">LOCATION_MINSIZEREL</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_target_property</span><span class="p">(</span><span class="o">${</span><span class="nv">name</span><span class="o">}</span><span class="s">_LIBRARY_DEBUG</span><span class="w"> </span><span class="s">protobuf::lib</span><span class="o">${</span><span class="nv">filename</span><span class="o">}</span>
+<span class="w">      </span><span class="s">LOCATION_DEBUG</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nb">select_library_configurations</span><span class="p">(</span><span class="o">${</span><span class="nv">name</span><span class="o">}</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">name</span><span class="o">}</span><span class="s">_LIBRARY</span><span class="w"> </span><span class="o">${</span><span class="nv">${name</span><span class="o">}</span><span class="s">_LIBRARY}</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">name</span><span class="o">}</span><span class="s">_LIBRARIES</span><span class="w"> </span><span class="o">${</span><span class="nv">${name</span><span class="o">}</span><span class="s">_LIBRARIES}</span><span class="w"> </span><span class="s">PARENT_SCOPE</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+<span class="nb">endfunction</span><span class="p">()</span>
+
+<span class="c">#</span>
+<span class="c"># Main.</span>
+<span class="c">#</span>
+
+<span class="c"># By default have PROTOBUF_GENERATE_CPP macro pass -I to protoc</span>
+<span class="c"># for each directory where a proto file is referenced.</span>
+<span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">DEFINED</span><span class="w"> </span><span class="s">PROTOBUF_GENERATE_CPP_APPEND_PATH</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">set</span><span class="p">(</span><span class="s">PROTOBUF_GENERATE_CPP_APPEND_PATH</span><span class="w"> </span><span class="s">TRUE</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+
+<span class="c"># The Protobuf library</span>
+<span class="nb">_protobuf_find_libraries</span><span class="p">(</span><span class="s">Protobuf</span><span class="w"> </span><span class="s">protobuf</span><span class="p">)</span>
+
+<span class="c"># The Protobuf Lite library</span>
+<span class="nb">_protobuf_find_libraries</span><span class="p">(</span><span class="s">Protobuf_LITE</span><span class="w"> </span><span class="s">protobuf-lite</span><span class="p">)</span>
+
+<span class="c"># The Protobuf Protoc Library</span>
+<span class="nb">_protobuf_find_libraries</span><span class="p">(</span><span class="s">Protobuf_PROTOC</span><span class="w"> </span><span class="s">protoc</span><span class="p">)</span>
+
+<span class="c"># Set the include directory</span>
+<span class="nb">get_target_property</span><span class="p">(</span><span class="s">Protobuf_INCLUDE_DIRS</span><span class="w"> </span><span class="s">protobuf::libprotobuf</span>
+<span class="w">  </span><span class="s">INTERFACE_INCLUDE_DIRECTORIES</span><span class="p">)</span>
+
+<span class="c"># Set the protoc Executable</span>
+<span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">Protobuf_PROTOC_EXECUTABLE</span><span class="w"> </span><span class="s">AND</span><span class="w"> </span><span class="s">TARGET</span><span class="w"> </span><span class="s">protobuf::protoc</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">get_target_property</span><span class="p">(</span><span class="s">Protobuf_PROTOC_EXECUTABLE</span><span class="w"> </span><span class="s">protobuf::protoc</span>
+<span class="w">    </span><span class="s">IMPORTED_LOCATION_RELEASE</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">EXISTS</span><span class="w"> </span><span class="s2">&quot;${Protobuf_PROTOC_EXECUTABLE}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_target_property</span><span class="p">(</span><span class="s">Protobuf_PROTOC_EXECUTABLE</span><span class="w"> </span><span class="s">protobuf::protoc</span>
+<span class="w">      </span><span class="s">IMPORTED_LOCATION_RELWITHDEBINFO</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">EXISTS</span><span class="w"> </span><span class="s2">&quot;${Protobuf_PROTOC_EXECUTABLE}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_target_property</span><span class="p">(</span><span class="s">Protobuf_PROTOC_EXECUTABLE</span><span class="w"> </span><span class="s">protobuf::protoc</span>
+<span class="w">      </span><span class="s">IMPORTED_LOCATION_MINSIZEREL</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">EXISTS</span><span class="w"> </span><span class="s2">&quot;${Protobuf_PROTOC_EXECUTABLE}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_target_property</span><span class="p">(</span><span class="s">Protobuf_PROTOC_EXECUTABLE</span><span class="w"> </span><span class="s">protobuf::protoc</span>
+<span class="w">      </span><span class="s">IMPORTED_LOCATION_DEBUG</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+<span class="w">  </span><span class="nb">if</span><span class="p">(</span><span class="s">NOT</span><span class="w"> </span><span class="s">EXISTS</span><span class="w"> </span><span class="s2">&quot;${Protobuf_PROTOC_EXECUTABLE}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">get_target_property</span><span class="p">(</span><span class="s">Protobuf_PROTOC_EXECUTABLE</span><span class="w"> </span><span class="s">protobuf::protoc</span>
+<span class="w">      </span><span class="s">IMPORTED_LOCATION_NOCONFIG</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">endif</span><span class="p">()</span>
+<span class="nb">endif</span><span class="p">()</span>
+
+<span class="c"># Version info variable</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">Protobuf_VERSION</span><span class="w"> </span><span class="s2">&quot;3.21.4.0&quot;</span><span class="p">)</span>
+
+<span class="nb">include</span><span class="p">(</span><span class="s">FindPackageHandleStandardArgs</span><span class="p">)</span>
+<span class="nb">FIND_PACKAGE_HANDLE_STANDARD_ARGS</span><span class="p">(</span><span class="s">Protobuf</span>
+<span class="w">    </span><span class="s">REQUIRED_VARS</span><span class="w"> </span><span class="s">Protobuf_PROTOC_EXECUTABLE</span><span class="w"> </span><span class="s">Protobuf_LIBRARIES</span><span class="w"> </span><span class="s">Protobuf_INCLUDE_DIRS</span>
+<span class="w">    </span><span class="s">VERSION_VAR</span><span class="w"> </span><span class="s">Protobuf_VERSION</span>
+<span class="p">)</span>
+
+<span class="c"># Backwards compatibility</span>
+<span class="nb">endif</span><span class="p">()</span>
+<span class="nb">foreach</span><span class="p">(</span><span class="s">Camel</span>
+<span class="w">    </span><span class="s">Protobuf_VERSION</span>
+<span class="w">    </span><span class="s">Protobuf_SRC_ROOT_FOLDER</span>
+<span class="w">    </span><span class="s">Protobuf_IMPORT_DIRS</span>
+<span class="w">    </span><span class="s">Protobuf_DEBUG</span>
+<span class="w">    </span><span class="s">Protobuf_INCLUDE_DIRS</span>
+<span class="w">    </span><span class="s">Protobuf_LIBRARIES</span>
+<span class="w">    </span><span class="s">Protobuf_PROTOC_LIBRARIES</span>
+<span class="w">    </span><span class="s">Protobuf_LITE_LIBRARIES</span>
+<span class="w">    </span><span class="s">Protobuf_LIBRARY</span>
+<span class="w">    </span><span class="s">Protobuf_PROTOC_LIBRARY</span>
+<span class="w">    </span><span class="s">Protobuf_INCLUDE_DIR</span>
+<span class="w">    </span><span class="s">Protobuf_PROTOC_EXECUTABLE</span>
+<span class="w">    </span><span class="s">Protobuf_LIBRARY_DEBUG</span>
+<span class="w">    </span><span class="s">Protobuf_PROTOC_LIBRARY_DEBUG</span>
+<span class="w">    </span><span class="s">Protobuf_LITE_LIBRARY</span>
+<span class="w">    </span><span class="s">Protobuf_LITE_LIBRARY_DEBUG</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="nb">string</span><span class="p">(</span><span class="s">TOUPPER</span><span class="w"> </span><span class="o">${</span><span class="nv">Camel</span><span class="o">}</span><span class="w"> </span><span class="s">UPPER</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="o">${</span><span class="nv">UPPER</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">${Camel</span><span class="o">}</span><span class="s">}</span><span class="p">)</span>
+<span class="nb">endforeach</span><span class="p">()</span>
+
+<span class="err">```</span><span class="c">#### lib/cmake/protobuf/protobuf-options.cmake</span>
+<span class="err">```cmake</span>
+<span class="c"># Verbose output</span>
+<span class="nb">option</span><span class="p">(</span><span class="s">protobuf_VERBOSE</span><span class="w"> </span><span class="s2">&quot;Enable for verbose output&quot;</span><span class="w"> </span><span class="s">OFF</span><span class="p">)</span>
+<span class="nb">mark_as_advanced</span><span class="p">(</span><span class="s">protobuf_VERBOSE</span><span class="p">)</span>
+
+<span class="c"># FindProtobuf module compatible</span>
+<span class="nb">option</span><span class="p">(</span><span class="s">protobuf_MODULE_COMPATIBLE</span><span class="w"> </span><span class="s2">&quot;CMake built-in FindProtobuf.cmake module compatible&quot;</span><span class="w"> </span><span class="s">OFF</span><span class="p">)</span>
+<span class="nb">mark_as_advanced</span><span class="p">(</span><span class="s">protobuf_MODULE_COMPATIBLE</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="using-protobuf-with-visual-studio">Using protobuf with Visual Studio<a class="headerlink" href="#using-protobuf-with-visual-studio" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h3 id="visual-studio-conan-generators"><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html">Visual Studio Conan generators</a><a class="headerlink" href="#visual-studio-conan-generators" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<ul>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html#msbuilddeps">MSBuildDeps</a>: generates the <strong>conandeps.props</strong> properties file with information about where the <strong>protobuf</strong> library and its dependencies  ( <a href="https://conan.io/center/zlib">zlib</a>) are installed together with other information like version, flags, and directory data or configuration.</p>
+</li>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html#msbuildtoolchain">MSBuildToolchain</a>: Generates the <strong>conantoolchain.props</strong> properties file with the current package configuration, settings, and options.</p>
+</li>
+</ul>
+<p>Declare these generators in your <strong>conanfile.txt</strong> along with your <strong>protobuf</strong> dependency like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[requires]</span>
+<span class="na">protobuf/3.21.4</span>
+
+<span class="k">[generators]</span>
+<span class="na">MSBuildDeps</span>
+<span class="na">MSBuildToolchain</span>
+</code></pre></div>
+<p><br></p>
+<p>Please, <a href="https://docs.conan.io/en/latest/reference/conanfile/tools/microsoft.html">check the Conan documentation</a> for more detailed information on how to add these properties files to your Visual Studio projects.</p>
+<p><br></p>
+<h2 id="using-protobuf-with-autotools-and-pkg-config">Using protobuf with Autotools and pkg-config<a class="headerlink" href="#using-protobuf-with-autotools-and-pkg-config" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h3 id="autotools-conan-generators"><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/gnu.html">Autotools Conan generators</a><a class="headerlink" href="#autotools-conan-generators" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<ul>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/autotoolstoolchain.html">AutotoolsToolchain</a>: generates the <strong>conanautotoolstoolchain.sh/bat</strong> script translating information from the current package configuration, settings, and options setting some enviroment variables for Autotools like: <code>CPPFLAGS</code>, <code>CXXFLAGS</code>, <code>CFLAGS</code> and <code>LDFLAGS</code>. It will also generate a <code>deactivate_conanautotoolstoolchain.sh/bat</code> so you can restore your environment.</p>
+</li>
+<li>
+<p><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/autotoolsdeps.html">AutotoolsDeps</a>: generates the <strong>conanautotoolsdeps.sh/bat</strong> script with information about where the <strong>protobuf</strong> library and its dependencies  ( <a href="https://conan.io/center/zlib">zlib</a>) are installed together with other information like version, flags, and directory data or configuration. This is done setting some enviroment variables for Autotools like: <code>LIBS</code>, <code>CPPFLAGS</code>,<code>CXXFLAGS</code>, <code>CFLAGS</code> and <code>LDFLAGS</code>.  It will also generate a <code>deactivate_conanautotoolsdeps.sh/bat</code> so you can restore your environment.</p>
+</li>
+</ul>
+<p>Declare these generators in your <strong>conanfile.txt</strong> along with your <strong>protobuf</strong> dependency like:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[requires]</span>
+<span class="na">protobuf/3.21.4</span>
+
+<span class="k">[generators]</span>
+<span class="na">AutotoolsToolchain</span>
+<span class="na">AutotoolsDeps</span>
+</code></pre></div>
+<p><br></p>
+<p>Then, building your project is as easy as:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.
+<span class="c1"># set the environment variables for Autotools</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>conanautotoolstoolchain.sh
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>conanautotoolsdeps.sh
+$<span class="w"> </span>./configure
+$<span class="w"> </span>make
+
+<span class="c1"># restore the environment after the build is completed</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>deactivate_conanautotoolstoolchain.sh
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>deactivate_conanautotoolsdeps.sh
+</code></pre></div>
+<p><br></p>
+<h3 id="pkg-config-conan-generator"><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/pkgconfigdeps.html">pkg-config Conan generator</a><a class="headerlink" href="#pkg-config-conan-generator" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<ul>
+<li><a href="https://docs.conan.io/en/latest/reference/conanfile/tools/gnu/pkgconfigdeps.html">PkgConfigDeps</a>: generates the <strong>protobuf_full_package.pc</strong> file (and the ones corresponding to <strong>protobuf</strong> dependencies) with information about the dependencies that can be later used by the <strong>pkg-config</strong> tool pkg-config to collect data about the libraries Conan installed.</li>
+</ul>
+<p><br></p>
+<p>You can use this generator instead of the <strong>AutotoolsDeps</strong> one:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[requires]</span>
+<span class="na">protobuf/3.21.4</span>
+
+<span class="k">[generators]</span>
+<span class="na">AutotoolsToolchain</span>
+<span class="na">PkgConfigDeps</span>
+</code></pre></div>
+<p><br></p>
+<p>And then using <strong>pkg-config</strong> to set the environment variables you want, like:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>conan<span class="w"> </span>install<span class="w"> </span>.
+<span class="c1"># set the environment variables for Autotools</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>conanautotoolstoolchain.sh
+
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">CPPFLAGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CPPFLAGS</span><span class="s2"> </span><span class="k">$(</span>pkg-config<span class="w"> </span>--cflags<span class="w"> </span>protobuf<span class="k">)</span><span class="s2">&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">LIBS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LIBS</span><span class="s2"> </span><span class="k">$(</span>pkg-config<span class="w"> </span>--libs-only-l<span class="w"> </span>protobuf<span class="k">)</span><span class="s2">&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LDFLAGS</span><span class="s2"> </span><span class="k">$(</span>pkg-config<span class="w"> </span>--libs-only-L<span class="w"> </span>--libs-only-other<span class="w"> </span>protobuf<span class="k">)</span><span class="s2">&quot;</span>
+
+$<span class="w"> </span>./configure
+$<span class="w"> </span>make
+
+<span class="c1"># restore the environment after the build is completed</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>deactivate_conanautotoolstoolchain.sh
+</code></pre></div>
+<p><br></p>
+<p>As the protobuf Conan package defines components you can use them to link only that desired part of the library in your project.  To check all the available components for <strong>protobuf</strong> Conan package, and the corresponding <em>.pc</em> files names, please check the dedicated section at the end of this document.</p>
+<p><br></p>
+<h2 id="other-build-systems">Other build systems<a class="headerlink" href="#other-build-systems" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<p>Please, <a href="https://docs.conan.io/en/latest/reference/conanfile/tools.html">check the Conan documentation</a> for other integrations besides the ones listed in this document.</p>
+<p><br></p>
+<h2 id="declared-components-for-protobuf">Declared components for protobuf<a class="headerlink" href="#declared-components-for-protobuf" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<p>These are all the declared components for the <strong>protobuf</strong> Conan package:
+* Component <strong>libprotobuf</strong>:
+  * CMake target name: <code>protobuf::libprotobuf</code>
+  * pkg-config <em>.pc</em> file: <strong>protobuf.pc</strong>
+  * Requires other components: <strong>zlib::zlib</strong>
+  * Links to libraries: <strong>protobuf</strong>
+  * Systems libs: <strong>pthread</strong>, <strong>atomic</strong>
+* Component <strong>libprotoc</strong>:
+  * CMake target name: <code>protobuf::libprotoc</code>
+  * pkg-config <em>.pc</em> file: <strong>protobuf_full_package-libprotoc.pc</strong>
+  * Requires other components: <strong>libprotobuf</strong>
+  * Links to libraries: <strong>protoc</strong></p>
+<p><br></p>
+<h2 id="exposed-header-files-for-protobuf">Exposed header files for protobuf<a class="headerlink" href="#exposed-header-files-for-protobuf" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/api.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/field_mask.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/generated_message_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/implicit_weak_message.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/any.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/type.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/text_format.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/descriptor.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/map_field.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/map_field_inl.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/arenaz_sampler.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/type.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/extension_set_inl.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/timestamp.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/struct.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/duration.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/arenastring.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/message.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/arena_impl.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/has_bits.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/metadata.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/empty.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/map_entry.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/field_mask.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/descriptor_database.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/wire_format_lite.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/wrappers.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/struct.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/any.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/port.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/repeated_ptr_field.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/endian.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/generated_message_tctable_decl.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/generated_message_reflection.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/map_entry_lite.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/reflection_ops.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/metadata_lite.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/repeated_field.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/wire_format.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/field_access_listener.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/service.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/duration.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/port_def.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/dynamic_message.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/generated_enum_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/explicitly_constructed.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/api.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/message_lite.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/generated_enum_reflection.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/map_type_handler.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/unknown_field_set.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/map_field_lite.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/timestamp.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/descriptor.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/empty.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/generated_message_tctable_impl.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/reflection.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/descriptor.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/wrappers.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/parse_context.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/map.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/generated_message_bases.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/arena.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/port_undef.inc&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/source_context.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/extension_set.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/inlined_string_field.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/source_context.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/any.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/util/type_resolver.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/util/time_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/util/message_differencer.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/util/json_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/util/field_comparator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/util/delimited_message_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/util/field_mask_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/util/type_resolver_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/macros.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/hash.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/bytestream.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/once.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/template_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/common.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/logging.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/port.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/callback.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/mutex.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/platform_macros.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/map_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/casts.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/stringpiece.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/status.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/stl_util.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/stubs/strutil.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/io/zero_copy_stream_impl_lite.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/io/printer.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/io/gzip_stream.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/io/strtod.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/io/coded_stream.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/io/zero_copy_stream.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/io/tokenizer.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/io/zero_copy_stream_impl.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/io/io_win32.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/plugin.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/command_line_interface.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/importer.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/code_generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/parser.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/plugin.proto&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/plugin.pb.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/csharp/csharp_names.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/csharp/csharp_generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/csharp/csharp_doc_comment.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/csharp/csharp_options.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/php/php_generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/objectivec/objectivec_helpers.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/objectivec/objectivec_generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/cpp/cpp_generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/cpp/generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/cpp/names.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/cpp/helpers.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/cpp/file.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/java/generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/java/kotlin_generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/java/names.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/java/java_generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/python/generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/python/python_generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/python/pyi_generator.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;google/protobuf/compiler/ruby/ruby_generator.h&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="-">---<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<p>Conan <strong>1.58.0</strong>. JFrog LTD. <a href="https://conan.io">https://conan.io</a>. Autogenerated 2023-02-05 17:37:10.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6df46069.min.js"></script>
+      
+    
+  </body>
+</html>
